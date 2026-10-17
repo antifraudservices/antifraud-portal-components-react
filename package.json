@@ -14,6 +14,23 @@
       "types": "./dist/credential-profile-selector.d.ts",
       "default": "./dist/credential-profile-selector.js"
     },
+    "./identity-evidence-editor": {
+      "types": "./dist/identity-evidence-editor.d.ts",
+      "default": "./dist/identity-evidence-editor.js"
+    },
+    "./organization-workforce-administration": {
+      "types": "./dist/organization-workforce-administration.d.ts",
+      "default": "./dist/organization-workforce-administration.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./professional-qualification-card": {
+      "types": "./dist/professional-qualification-card.d.ts",
+      "default": "./dist/professional-qualification-card.js"
+    },
+    "./qualification-evidence-editor": {
+      "types": "./dist/qualification-evidence-editor.d.ts",
+      "default": "./dist/qualification-evidence-editor.js"
+    },
     "./verification-journey-panel": {
       "types": "./dist/verification-journey-panel.d.ts",
       "default": "./dist/verification-journey-panel.js"
@@ -21,7 +38,7 @@
   },
   "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && cp src/styles.css dist/styles.css",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
