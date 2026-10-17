@@ -9,3 +9,5 @@
 - Define qualification evidence UI that resolves awarding organizations by
   legal identifier and jurisdiction and displays employer and source proofs
   separately.
+- Add the controlled `ProfessionalQualificationCard` with independent employer,
+  issuer, professional-body and licence badges and accessible proof details.

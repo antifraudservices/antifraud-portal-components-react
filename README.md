@@ -12,7 +12,7 @@ Components render state and emit typed user intentions. They do not contain tena
 
 Applications supply adapters and localized content. This keeps the same components reusable in different portals while each backend preserves its own authorization and session boundary.
 
-Planned components include:
+The component set covers:
 
 - verification-method selection;
 - wallet QR and deep-link presentation;
@@ -28,6 +28,8 @@ Planned components include:
 - awarding-organization lookup by legal identifier and jurisdiction;
 - employee identity and qualification evidence review with clearly separated
   employer and source-issuer proofs.
+- professional qualification cards with independent employer, awarding-body,
+  professional-body and licence status badges plus authoritative proof details.
 
 ## Protocol boundary
 
@@ -69,6 +71,12 @@ the authoritative organization result returned by the host. When no
 source-issued credential exists, it labels the action as an employer
 attestation and identifies the employer signature separately.
 
+`ProfessionalQualificationCard` is controlled: it renders qualification and
+proof state supplied by the host, exposes proof-selection intentions, and
+shows the legal identifier, jurisdiction, verification time and status of the
+selected authority. It does not decide whether the user may work, access a
+subject, or perform a professional action.
+
 ## Intended dependency direction
 
 ```text
@@ -83,7 +91,9 @@ portal applications
 
 ## Implementation gate
 
-The first visual increment will be test-driven against the shared flow states. Storybook or screenshots may document appearance, but only interaction tests and a real application journey prove behavior.
+Each visual increment is test-driven against the shared flow states. Storybook
+or screenshots may document appearance, but only interaction tests and a real
+application journey prove behavior.
 
 ## License
 
