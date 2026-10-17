@@ -1,0 +1,50 @@
+{
+  "name": "antifraud-portal-components-react",
+  "version": "0.1.0",
+  "description": "Reusable React components for neutral antifraud verification and attestation journeys",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./credential-profile-selector": {
+      "types": "./dist/credential-profile-selector.d.ts",
+      "default": "./dist/credential-profile-selector.js"
+    },
+    "./verification-journey-panel": {
+      "types": "./dist/verification-journey-panel.d.ts",
+      "default": "./dist/verification-journey-panel.js"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "engines": {"node": ">=24.0.0"},
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "react": ">=18.3.0",
+    "react-dom": ">=18.3.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "jsdom": "^26.1.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antifraudservices/antifraud-portal-components-react.git"
+  }
+}
