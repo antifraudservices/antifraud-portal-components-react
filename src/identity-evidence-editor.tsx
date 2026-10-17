@@ -56,6 +56,7 @@ export type IdentityEvidenceEditorProps = Readonly<{
   onSubmit?(submission: IdentityEvidenceEditorSubmission): void
   disabled?: boolean
   copy?: IdentityEvidenceEditorCopy
+  submitAction?: string
 }>
 
 type TargetChoice = 'subject' | 'relationship' | 'age-over'
@@ -76,6 +77,7 @@ export function IdentityEvidenceEditor({
   onSubmit,
   disabled = false,
   copy = DEFAULT_COPY,
+  submitAction,
 }: IdentityEvidenceEditorProps) {
   const [subjectReference, setSubjectReference] = useState('')
   const [targetChoice, setTargetChoice] = useState<TargetChoice>('subject')
@@ -243,7 +245,7 @@ export function IdentityEvidenceEditor({
           />
         </label>
 
-        <button disabled={!complete} type="submit">{copy.submit}</button>
+        <button data-portal-action={submitAction} disabled={!complete} type="submit">{copy.submit}</button>
       </form>
     </section>
   )

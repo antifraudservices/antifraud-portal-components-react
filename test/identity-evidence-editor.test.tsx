@@ -13,11 +13,13 @@ const subjects = Object.freeze([
 describe('IdentityEvidenceEditor', () => {
   it('emits separate subject, controller-relationship and age-over intentions', async () => {
     const onSubmit = vi.fn()
-    render(<IdentityEvidenceEditor onSubmit={onSubmit} subjects={subjects} />)
+    render(<IdentityEvidenceEditor onSubmit={onSubmit} subjects={subjects} submitAction="record-identity-evidence" />)
 
     await userEvent.selectOptions(screen.getByLabelText('Subject'), 'urn:subject:student-opaque')
     await userEvent.type(screen.getByLabelText('Evidence check reference'), 'urn:check:student-identity')
-    await userEvent.click(screen.getByRole('button', { name: 'Record evidence' }))
+    const submit = screen.getByRole('button', { name: 'Record evidence' })
+    expect(submit).toHaveAttribute('data-portal-action', 'record-identity-evidence')
+    await userEvent.click(submit)
 
     expect(onSubmit).toHaveBeenLastCalledWith(expect.objectContaining({
       subjectReference: 'urn:subject:student-opaque',

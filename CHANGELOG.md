@@ -4,6 +4,8 @@
 
 - Let host portals localize the identity-evidence editor without changing its
   emitted neutral target contract.
+- Let host portals attach their stable end-to-end action identifier to the
+  shared submit control.
 
 - Migrate the controlled, sector-neutral organization workforce component and
   required styles from the public Apache-2.0 UHC component package with source
