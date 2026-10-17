@@ -30,6 +30,9 @@ The component set covers:
   employer and source-issuer proofs.
 - professional qualification cards with independent employer, awarding-body,
   professional-body and licence status badges plus authoritative proof details.
+- a controlled identity-evidence editor for subject evidence, relationships and
+  configurable age-over predicates, without browser-authored actor or
+  authorization fields.
 
 ## Protocol boundary
 
@@ -61,9 +64,13 @@ the group, and create any required Communication notice. A subject or lawful
 representative authorization is displayed separately when the use case needs
 one.
 
-The generic SOS Gateway Controller Portal is an intended consumer of these
-components. SOS-specific navigation, localization, authentication, capability
-resolution, and persistence remain in that portal and its backend.
+The public Antifraud controller portal owns organization and workforce
+administration. Sector-specific employee journeys belong to professional
+portals. The planned Antifraud profile is `qualification-education`; animal
+workflows remain in the existing multisector VetChain professional portal.
+Both may reuse these neutral components. Every consuming application owns its
+navigation, localization, authentication, capability resolution and
+persistence.
 
 Qualification UI must never infer a university from display text. It emits a
 lookup intention containing legal identifier and jurisdiction, then renders
@@ -83,6 +90,14 @@ jurisdiction, and select a scanned PDF, PNG, JPEG or TIFF. The host owns upload,
 SHA3-384 CID calculation, authorization, persistence, signing and notification.
 The component submits an explicit employer-attestation intention and never
 labels it as issuer verification.
+
+`IdentityEvidenceEditor` is used by an already authenticated workforce member.
+The host supplies opaque subject references and labels. The component emits a
+subject, relationship or age-over intention, but the trusted host supplies the
+actor, assignment, organization, group authorization, subject authorization,
+time and authoritative readback. Only threshold 18 may be projected as the
+standardized EUDI PID `age_over_18` element; other thresholds remain governed
+predicates.
 
 ## Intended dependency direction
 

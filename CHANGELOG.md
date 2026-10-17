@@ -2,10 +2,18 @@
 
 ## Unreleased
 
+- Migrate the controlled, sector-neutral organization workforce component and
+  required styles from the public Apache-2.0 UHC component package with source
+  provenance retained.
+
+- Add a controlled identity-evidence editor for subject identity,
+  subject-to-subject relationships and configurable age-over predicates.
+
 - Add controlled credential-profile and verification-journey components.
 - Define controlled workforce administration components for invitations,
-  departments, group membership, and assignment-change notifications, intended
-  for reuse by the generic SOS Gateway Controller Portal.
+  departments, group membership, and assignment-change notifications. The
+  Antifraud portal owns the education journey; other products reuse the
+  neutral components in their own portals.
 - Define qualification evidence UI that resolves awarding organizations by
   legal identifier and jurisdiction and displays employer and source proofs
   separately.
