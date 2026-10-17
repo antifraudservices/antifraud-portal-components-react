@@ -81,4 +81,29 @@ describe('IdentityEvidenceEditor', () => {
     expect(screen.queryByLabelText(/organization/u)).not.toBeInTheDocument()
     expect(screen.queryByLabelText(/group authorization/u)).not.toBeInTheDocument()
   })
+
+  it('uses host-provided copy without changing the emitted neutral contract', async () => {
+    const onSubmit = vi.fn()
+    render(<IdentityEvidenceEditor
+      copy={{
+        title: 'Evidencia de identidad',
+        description: 'Registra lo revisado.',
+        subject: 'Sujeto', selectSubject: 'Selecciona un sujeto',
+        target: 'Objetivo', subjectIdentity: 'Identidad del sujeto',
+        relationship: 'Relación entre sujetos', ageOver: 'Edad superior a',
+        relationshipEvidence: 'Evidencia de relación', relatedSubject: 'Sujeto relacionado',
+        selectRelatedSubject: 'Selecciona el sujeto relacionado', relationshipType: 'Tipo de relación',
+        agePredicate: 'Predicado de edad', ageThreshold: 'Umbral de edad',
+        meetsThreshold: 'Cumple el umbral', ageProfileHint: 'Solo 18 tiene atributo EUDI PID estándar.',
+        checkReference: 'Referencia de comprobación', submit: 'Registrar evidencia',
+      }}
+      onSubmit={onSubmit}
+      subjects={subjects}
+    />)
+
+    await userEvent.selectOptions(screen.getByLabelText('Sujeto'), 'urn:subject:student-opaque')
+    await userEvent.type(screen.getByLabelText('Referencia de comprobación'), 'urn:check:localized')
+    await userEvent.click(screen.getByRole('button', { name: 'Registrar evidencia' }))
+    expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ target: { kind: 'subject' } }))
+  })
 })

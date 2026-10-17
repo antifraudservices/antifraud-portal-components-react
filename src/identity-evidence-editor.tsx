@@ -30,18 +30,52 @@ export type IdentityEvidenceEditorSubmission = Readonly<{
   checkReference: string
 }>
 
+export type IdentityEvidenceEditorCopy = Readonly<{
+  title: string
+  description: string
+  subject: string
+  selectSubject: string
+  target: string
+  subjectIdentity: string
+  relationship: string
+  ageOver: string
+  relationshipEvidence: string
+  relatedSubject: string
+  selectRelatedSubject: string
+  relationshipType: string
+  agePredicate: string
+  ageThreshold: string
+  meetsThreshold: string
+  ageProfileHint: string
+  checkReference: string
+  submit: string
+}>
+
 export type IdentityEvidenceEditorProps = Readonly<{
   subjects: readonly IdentityEvidenceSubjectOption[]
   onSubmit?(submission: IdentityEvidenceEditorSubmission): void
   disabled?: boolean
+  copy?: IdentityEvidenceEditorCopy
 }>
 
 type TargetChoice = 'subject' | 'relationship' | 'age-over'
+
+const DEFAULT_COPY: IdentityEvidenceEditorCopy = Object.freeze({
+  title: 'Identity evidence',
+  description: 'Record what was examined. The trusted service supplies the employee, organization and authorization and returns the authoritative result.',
+  subject: 'Subject', selectSubject: 'Select a subject', target: 'Evidence target',
+  subjectIdentity: 'Subject identity', relationship: 'Relationship between subjects', ageOver: 'Age-over predicate',
+  relationshipEvidence: 'Relationship evidence', relatedSubject: 'Related subject', selectRelatedSubject: 'Select the related subject', relationshipType: 'Relationship type',
+  agePredicate: 'Age predicate', ageThreshold: 'Age threshold', meetsThreshold: 'The subject meets this age threshold',
+  ageProfileHint: 'Only age over 18 maps to the standardized EUDI PID attribute. Other thresholds remain explicitly governed predicates.',
+  checkReference: 'Evidence check reference', submit: 'Record evidence',
+})
 
 export function IdentityEvidenceEditor({
   subjects,
   onSubmit,
   disabled = false,
+  copy = DEFAULT_COPY,
 }: IdentityEvidenceEditorProps) {
   const [subjectReference, setSubjectReference] = useState('')
   const [targetChoice, setTargetChoice] = useState<TargetChoice>('subject')
@@ -95,23 +129,20 @@ export function IdentityEvidenceEditor({
   return (
     <section aria-labelledby="identity-evidence-editor-title">
       <header>
-        <h2 id="identity-evidence-editor-title">Identity evidence</h2>
-        <p>
-          Record what was examined. The trusted service supplies the employee,
-          organization and authorization and returns the authoritative result.
-        </p>
+        <h2 id="identity-evidence-editor-title">{copy.title}</h2>
+        <p>{copy.description}</p>
       </header>
 
       <form onSubmit={submit}>
         <label>
-          <span>Subject</span>
+          <span>{copy.subject}</span>
           <select
             disabled={disabled}
             onChange={event => setSubjectReference(event.currentTarget.value)}
             required
             value={subjectReference}
           >
-            <option value="">Select a subject</option>
+            <option value="">{copy.selectSubject}</option>
             {subjects.map(subject => (
               <option
                 disabled={subject.disabled}
@@ -125,30 +156,30 @@ export function IdentityEvidenceEditor({
         </label>
 
         <label>
-          <span>Evidence target</span>
+          <span>{copy.target}</span>
           <select
             disabled={disabled}
             onChange={event => setTargetChoice(event.currentTarget.value as TargetChoice)}
             value={targetChoice}
           >
-            <option value="subject">Subject identity</option>
-            <option value="relationship">Relationship between subjects</option>
-            <option value="age-over">Age-over predicate</option>
+            <option value="subject">{copy.subjectIdentity}</option>
+            <option value="relationship">{copy.relationship}</option>
+            <option value="age-over">{copy.ageOver}</option>
           </select>
         </label>
 
         {targetChoice === 'relationship' ? (
           <fieldset>
-            <legend>Relationship evidence</legend>
+            <legend>{copy.relationshipEvidence}</legend>
             <label>
-              <span>Related subject</span>
+              <span>{copy.relatedSubject}</span>
               <select
                 disabled={disabled}
                 onChange={event => setRelatedSubjectReference(event.currentTarget.value)}
                 required
                 value={relatedSubjectReference}
               >
-                <option value="">Select the related subject</option>
+                <option value="">{copy.selectRelatedSubject}</option>
                 {subjects
                   .filter(subject => subject.reference !== subjectReference)
                   .map(subject => (
@@ -163,7 +194,7 @@ export function IdentityEvidenceEditor({
               </select>
             </label>
             <label>
-              <span>Relationship type</span>
+              <span>{copy.relationshipType}</span>
               <input
                 disabled={disabled}
                 onChange={event => setRelationshipType(event.currentTarget.value)}
@@ -176,9 +207,9 @@ export function IdentityEvidenceEditor({
 
         {targetChoice === 'age-over' ? (
           <fieldset>
-            <legend>Age predicate</legend>
+            <legend>{copy.agePredicate}</legend>
             <label>
-              <span>Age threshold</span>
+              <span>{copy.ageThreshold}</span>
               <input
                 disabled={disabled}
                 max={150}
@@ -196,17 +227,14 @@ export function IdentityEvidenceEditor({
                 onChange={event => setAgeResult(event.currentTarget.checked)}
                 type="checkbox"
               />
-              <span>The subject meets this age threshold</span>
+              <span>{copy.meetsThreshold}</span>
             </label>
-            <p>
-              Only age over 18 maps to the standardized EUDI PID attribute.
-              Other thresholds remain explicitly governed predicates.
-            </p>
+            <p>{copy.ageProfileHint}</p>
           </fieldset>
         ) : null}
 
         <label>
-          <span>Evidence check reference</span>
+          <span>{copy.checkReference}</span>
           <input
             disabled={disabled}
             onChange={event => setCheckReference(event.currentTarget.value)}
@@ -215,7 +243,7 @@ export function IdentityEvidenceEditor({
           />
         </label>
 
-        <button disabled={!complete} type="submit">Record evidence</button>
+        <button disabled={!complete} type="submit">{copy.submit}</button>
       </form>
     </section>
   )
