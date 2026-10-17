@@ -11,3 +11,6 @@
   separately.
 - Add the controlled `ProfessionalQualificationCard` with independent employer,
   issuer, professional-body and licence badges and accessible proof details.
+- Add the controlled `QualificationEvidenceEditor` for active employee
+  selection, authoritative issuer resolution, scanned-document handoff,
+  employer-attestation acknowledgement and issuer-delivery status.

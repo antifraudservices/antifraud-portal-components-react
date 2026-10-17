@@ -77,6 +77,13 @@ shows the legal identifier, jurisdiction, verification time and status of the
 selected authority. It does not decide whether the user may work, access a
 subject, or perform a professional action.
 
+`QualificationEvidenceEditor` lets a controller select an active employee,
+describe a qualification, resolve the claimed issuer by legal identifier and
+jurisdiction, and select a scanned PDF, PNG, JPEG or TIFF. The host owns upload,
+SHA3-384 CID calculation, authorization, persistence, signing and notification.
+The component submits an explicit employer-attestation intention and never
+labels it as issuer verification.
+
 ## Intended dependency direction
 
 ```text

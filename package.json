@@ -18,6 +18,10 @@
       "types": "./dist/professional-qualification-card.d.ts",
       "default": "./dist/professional-qualification-card.js"
     },
+    "./qualification-evidence-editor": {
+      "types": "./dist/qualification-evidence-editor.d.ts",
+      "default": "./dist/qualification-evidence-editor.js"
+    },
     "./verification-journey-panel": {
       "types": "./dist/verification-journey-panel.d.ts",
       "default": "./dist/verification-journey-panel.js"
