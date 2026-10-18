@@ -1,16 +1,15 @@
 # Portal Ownership
 
-The public Antifraud controller portal owns organization administration. It is
-separate from professional portals:
+The controller portal owns organization administration. It is separate from
+professional portals:
 
-1. `antifraud-controller-nextjs` manages departments, invitations, employees,
-   groups and reusable group authorizations;
-2. `qualification-education` will contain authorized education roles; and
-3. the existing multisector VetChain professional portal owns animal-sector
-   workflows and may reuse these neutral components.
+1. controller applications manage departments, invitations, employees, groups
+   and reusable group authorizations;
+2. sector applications contain authorized professional roles; and
+3. multisector professional portals own their sector workflows and may reuse
+   these neutral components.
 
-The education portal is currently a public scaffold, not a working
-application. There is no separate Antifraud animal portal.
+Any scaffold remains a prototype until its trusted backend journey is proven.
 
 Controller membership is not an employee-specific Consent. Selecting a group
 in the browser grants nothing. The trusted backend must confirm the exact
@@ -22,7 +21,6 @@ licences, subject vocabulary and authorization policy. The controller portal
 never opens a subject record; professional portals never administer controller
 authority.
 
-The controller application now exists locally and passes fixture UI tests, but
-uses an unpublished local component dependency. Until it pins a published
-version and passes the real backend and gateway journey, tests prove only
-controlled user intent and responsive interaction.
+Until a consumer pins a published version and passes its real backend and
+gateway journey, component tests prove only controlled user intent and
+responsive interaction.

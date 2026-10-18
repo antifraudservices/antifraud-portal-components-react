@@ -64,13 +64,10 @@ the group, and create any required Communication notice. A subject or lawful
 representative authorization is displayed separately when the use case needs
 one.
 
-The public Antifraud controller portal owns organization and workforce
-administration. Sector-specific employee journeys belong to professional
-portals. The planned Antifraud profile is `qualification-education`; animal
-workflows remain in the existing multisector VetChain professional portal.
-Both may reuse these neutral components. Every consuming application owns its
-navigation, localization, authentication, capability resolution and
-persistence.
+Organization administration belongs to a controller portal. Sector-specific
+employee journeys belong to professional portals. Both may reuse these neutral
+components. Every consuming application owns its navigation, localization,
+authentication, capability resolution and persistence.
 
 Qualification UI must never infer a university from display text. It emits a
 lookup intention containing legal identifier and jurisdiction, then renders

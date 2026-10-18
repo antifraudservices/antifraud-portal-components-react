@@ -1,5 +1,5 @@
 // Copyright 2026 Antifraud Services Inc. under the Apache License, Version 2.0.
-// Migrated from the public uhc-portal-components-react OrganizationWorkforceAdministration component; see docs/PROVENANCE.md.
+// Reimplemented as a neutral public workforce component; see docs/PROVENANCE.md.
 import type { FormEvent } from 'react'
 
 export type WorkforceLicenseSummary = Readonly<{
@@ -123,22 +123,22 @@ export function OrganizationWorkforceAdministration({
   }
 
   return (
-    <section className="uhcp-workforce" aria-labelledby="uhcp-workforce-title">
+    <section className="afpc-workforce" aria-labelledby="afpc-workforce-title">
       <header>
         <div>
-          <h1 id="uhcp-workforce-title">{copy.title}</h1>
+          <h1 id="afpc-workforce-title">{copy.title}</h1>
           <p>{copy.description}</p>
         </div>
-        <dl className="uhcp-license-summary">
+        <dl className="afpc-license-summary">
           <div><dt>{copy.totalLicenses}</dt><dd>{summary.total}</dd></div>
           <div><dt>{copy.usedLicenses}</dt><dd>{summary.used}</dd></div>
           <div><dt>{copy.freeLicenses}</dt><dd>{summary.free}</dd></div>
         </dl>
       </header>
 
-      <section className="uhcp-workforce-panel" aria-labelledby="uhcp-invite-title">
-        <h2 id="uhcp-invite-title">{copy.inviteTitle}</h2>
-        {noCapacity && <p role="status" className="uhcp-workforce-warning">{copy.noFreeLicenses}</p>}
+      <section className="afpc-workforce-panel" aria-labelledby="afpc-invite-title">
+        <h2 id="afpc-invite-title">{copy.inviteTitle}</h2>
+        {noCapacity && <p role="status" className="afpc-workforce-warning">{copy.noFreeLicenses}</p>}
         <form onSubmit={submitInvitation}>
           <label><span>{copy.emailLabel}</span><input type="email" required value={email} onChange={(event) => onEmailChange(event.currentTarget.value)} /></label>
           <label><span>{copy.roleLabel}</span><select required value={role} onChange={(event) => onRoleChange(event.currentTarget.value)}><option value="" />{roles.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
@@ -147,22 +147,22 @@ export function OrganizationWorkforceAdministration({
         </form>
       </section>
 
-      <section className="uhcp-workforce-panel" aria-labelledby="uhcp-employees-title">
-        <h2 id="uhcp-employees-title">{copy.employeesTitle}</h2>
+      <section className="afpc-workforce-panel" aria-labelledby="afpc-employees-title">
+        <h2 id="afpc-employees-title">{copy.employeesTitle}</h2>
         {employees.length === 0 ? <p>{copy.noEmployees}</p> : (
-          <div className="uhcp-table-scroll"><table><thead><tr><th>{copy.licenseColumn}</th><th>{copy.employeeColumn}</th><th>{copy.roleColumn}</th><th>{copy.statusColumn}</th><th>{copy.devicesColumn}</th><th>{copy.actionsColumn}</th></tr></thead><tbody>
+          <div className="afpc-table-scroll"><table><thead><tr><th>{copy.licenseColumn}</th><th>{copy.employeeColumn}</th><th>{copy.roleColumn}</th><th>{copy.statusColumn}</th><th>{copy.devicesColumn}</th><th>{copy.actionsColumn}</th></tr></thead><tbody>
             {employees.map((employee) => {
               const rowBusy = busyAction === employee.id
               return <tr key={employee.id}>
                 <td><code>{employee.licenseId}</code></td><td>{employee.email}</td><td>{employee.role}</td>
-                <td><span className={`uhcp-status uhcp-status-${employee.status}`}>{employee.status === 'active' ? copy.active : copy.inactive}</span></td>
+                <td><span className={`afpc-status afpc-status-${employee.status}`}>{employee.status === 'active' ? copy.active : copy.inactive}</span></td>
                 <td>{employee.deviceCount === undefined ? copy.devicesLater : employee.deviceCount}</td>
-                <td className="uhcp-row-actions">
+                <td className="afpc-row-actions">
                   {employee.status === 'active' ? (
-                    <button type="button" className="uhcp-warning-action" disabled={rowBusy} onClick={() => confirmAction(copy.confirmDisable, () => onDisable(employee.id))}>{copy.disable}</button>
+                    <button type="button" className="afpc-warning-action" disabled={rowBusy} onClick={() => confirmAction(copy.confirmDisable, () => onDisable(employee.id))}>{copy.disable}</button>
                   ) : (<>
-                    <button type="button" className="uhcp-primary-action" disabled={rowBusy} onClick={() => confirmAction(copy.confirmReactivate, () => onReactivate(employee.id))}>{copy.reactivate}</button>
-                    <button type="button" className="uhcp-danger" disabled={rowBusy} onClick={() => confirmAction(copy.confirmPurge, () => onPurge(employee.id))}>{copy.purge}</button>
+                    <button type="button" className="afpc-primary-action" disabled={rowBusy} onClick={() => confirmAction(copy.confirmReactivate, () => onReactivate(employee.id))}>{copy.reactivate}</button>
+                    <button type="button" className="afpc-danger" disabled={rowBusy} onClick={() => confirmAction(copy.confirmPurge, () => onPurge(employee.id))}>{copy.purge}</button>
                   </>)}
                 </td>
               </tr>
@@ -171,12 +171,12 @@ export function OrganizationWorkforceAdministration({
         )}
       </section>
 
-      <section className="uhcp-workforce-panel" aria-labelledby="uhcp-invitations-title">
-        <h2 id="uhcp-invitations-title">{copy.invitationsTitle}</h2>
-        {invitations.length === 0 ? <p>{copy.noInvitations}</p> : <ul className="uhcp-invitation-list">{invitations.map((invitation) => <li key={invitation.id}><span><strong>{invitation.email}</strong><small>{invitation.role}</small></span><span className={`uhcp-status uhcp-status-${invitation.status}`}>{copy[invitation.status]}</span></li>)}</ul>}
+      <section className="afpc-workforce-panel" aria-labelledby="afpc-invitations-title">
+        <h2 id="afpc-invitations-title">{copy.invitationsTitle}</h2>
+        {invitations.length === 0 ? <p>{copy.noInvitations}</p> : <ul className="afpc-invitation-list">{invitations.map((invitation) => <li key={invitation.id}><span><strong>{invitation.email}</strong><small>{invitation.role}</small></span><span className={`afpc-status afpc-status-${invitation.status}`}>{copy[invitation.status]}</span></li>)}</ul>}
       </section>
 
-      {error && <p role="alert" className="uhcp-error">{error}</p>}
+      {error && <p role="alert" className="afpc-error">{error}</p>}
     </section>
   )
 }
