@@ -36,6 +36,10 @@ The component set covers:
 - a future controlled attachment panel for Schema.org `DigitalDocument` and
   `MediaObject` records whose PDF, spreadsheet, Word, image, video or other
   governed bytes are transported by the host through DIDComm `attachments[]`.
+- a controlled environment selector that labels Demo as a simulated
+  blockchain and keeps Test Network and Production disabled unless the host
+  supplies trusted server state. It never reads browser storage, query strings,
+  collection prefixes, hosts or network configuration.
 
 ## Protocol boundary
 

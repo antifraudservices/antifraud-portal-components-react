@@ -1,4 +1,5 @@
 export * from './credential-profile-selector.js'
+export * from './environment-selector.js'
 export * from './identity-evidence-editor.js'
 export * from './organization-workforce-administration.js'
 export * from './professional-qualification-card.js'
