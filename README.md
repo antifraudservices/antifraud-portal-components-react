@@ -33,6 +33,9 @@ The component set covers:
 - a controlled identity-evidence editor for subject evidence, relationships and
   configurable age-over predicates, without browser-authored actor or
   authorization fields.
+- a future controlled attachment panel for Schema.org `DigitalDocument` and
+  `MediaObject` records whose PDF, spreadsheet, Word, image, video or other
+  governed bytes are transported by the host through DIDComm `attachments[]`.
 
 ## Protocol boundary
 
@@ -87,6 +90,12 @@ jurisdiction, and select a scanned PDF, PNG, JPEG or TIFF. The host owns upload,
 SHA3-384 CID calculation, authorization, persistence, signing and notification.
 The component submits an explicit employer-attestation intention and never
 labels it as issuer verification.
+
+Attachment presentation is Schema.org-native. Components must never label or
+serialize an item as FHIR `DocumentReference`; they render controlled
+`DigitalDocument`/`MediaObject` metadata while the host owns DIDComm transport,
+binary retrieval and authorization. The reusable panel task is
+[GitHub issue #5](https://github.com/antifraudservices/antifraud-portal-components-react/issues/5).
 
 `IdentityEvidenceEditor` is used by an already authenticated workforce member.
 The host supplies opaque subject references and labels. The component emits a
