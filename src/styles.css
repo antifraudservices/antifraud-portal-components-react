@@ -44,3 +44,30 @@
 .afpc-invitation-list small { color: var(--afpc-muted); }
 .afpc-error { color: #c64747 !important; }
 @media (max-width: 820px) { .afpc-workforce > header { align-items: stretch; flex-direction: column; } .afpc-workforce-panel form { grid-template-columns: 1fr; } }
+.af-environment-selector {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid #d7dbe2;
+  border-radius: 0.875rem;
+}
+
+.af-environment-option {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.af-environment-option span {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.af-environment-option small {
+  color: #5f6877;
+}
+
+.af-environment-option:has(input:disabled) {
+  opacity: 0.55;
+}

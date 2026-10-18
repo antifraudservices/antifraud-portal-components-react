@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.1.1 - 2026-10-18
+
+- Add an accessible controlled environment selector with an honestly labelled
+  simulated Demo and disabled Test Network and Production defaults.
+- Keep environment authority outside React; applications may enable an option
+  only from trusted server configuration.
+
 - Let host portals localize the identity-evidence editor without changing its
   emitted neutral target contract.
 - Let host portals attach their stable end-to-end action identifier to the
