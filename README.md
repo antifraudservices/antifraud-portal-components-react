@@ -40,6 +40,16 @@ The component set covers:
   blockchain and keeps Test Network and Production disabled unless the host
   supplies trusted server state. It never reads browser storage, query strings,
   collection prefixes, hosts or network configuration.
+- a sector-neutral shell, Personal Trust workspace and Professional operations
+  home shared by independently deployed portals;
+- a neutral catalog surface for Places, public Services and Products whose
+  publisher, jurisdiction, sector and DCAT distribution remain backend-owned.
+
+The shared shell exposes a header slot so consuming apps directly compose the
+same neutral `PortalHeader` used by Connect Health. They therefore share Inter
+typography, light/dark/system preferences, text-size controls and the
+established navy/turquoise semantic palette instead of maintaining a second
+header implementation.
 
 ## Protocol boundary
 
