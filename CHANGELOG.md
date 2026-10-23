@@ -1,6 +1,12 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 - 2026-10-23
+
+- Add shared sector portal shell, Trust verification, Professional operations,
+  neutral workspace and Places/Public Services/Products catalog surfaces.
+- Expose a header slot so consumers can reuse the Connect Health `PortalHeader`,
+  Inter typography, navy/turquoise palette and light/dark/system preference
+  contract.
 
 ## 0.1.1 - 2026-10-18
 

@@ -1,6 +1,6 @@
 {
   "name": "antifraud-portal-components-react",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Reusable React components for neutral antifraud verification and attestation journeys",
   "type": "module",
   "main": "./dist/index.js",
@@ -34,6 +34,10 @@
     "./qualification-evidence-editor": {
       "types": "./dist/qualification-evidence-editor.d.ts",
       "default": "./dist/qualification-evidence-editor.js"
+    },
+    "./sector-portal-surfaces": {
+      "types": "./dist/sector-portal-surfaces.d.ts",
+      "default": "./dist/sector-portal-surfaces.js"
     },
     "./verification-journey-panel": {
       "types": "./dist/verification-journey-panel.d.ts",
