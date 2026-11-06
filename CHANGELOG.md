@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 - 2026-11-06
+
+- Add the independently importable React Native/Web conversation surface.
+  Hosts provide authorized messages and retain delivery, attachments and
+  governed-resource rendering; the component supplies no transport or storage.
+- Select platform implementations behind that single contract: the maintained
+  React Native chat for Expo and a dependency-free browser adapter for Next.js.
+
 ## 0.2.0 - 2026-10-23
 
 - Add shared sector portal shell, Trust verification, Professional operations,
