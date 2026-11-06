@@ -85,7 +85,9 @@ export type OrganizationWorkforceAdministrationProps = Readonly<{
 }>
 
 /**
- * Controlled organization workforce surface shared by controller portals.
+ * @deprecated Import `OrganizationWorkforceAdministration` from
+ * `antifraud-hosting-components-react`. This compatibility implementation is
+ * retained temporarily for existing package consumers.
  *
  * The component never infers authorization or changes GW state. The host owns
  * invitation persistence, license reads and employee lifecycle commands.

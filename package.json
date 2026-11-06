@@ -1,6 +1,6 @@
 {
   "name": "antifraud-portal-components-react",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Reusable React components for neutral antifraud verification and attestation journeys",
   "type": "module",
   "main": "./dist/index.js",
@@ -61,7 +61,8 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json && node -e \"require('node:fs').copyFileSync('src/styles.css','dist/styles.css')\"",
-    "test": "vitest run",
+    "test": "vitest run --exclude test/organization-workforce-administration.test.tsx",
+    "test:legacy:workforce": "vitest run test/organization-workforce-administration.test.tsx",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "engines": {

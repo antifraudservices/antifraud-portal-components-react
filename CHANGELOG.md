@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2 - 2026-11-06
+
+- Deprecate the compatibility workforce administration export in favor of the
+  canonical controller screen from `antifraud-hosting-components-react`.
+- Keep the compatibility implementation and its explicit legacy test while
+  removing that test from the package's normal active-surface suite.
+
 ## 0.2.1 - 2026-11-06
 
 - Add the independently importable React Native/Web conversation surface.
