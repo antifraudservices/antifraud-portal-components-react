@@ -1,3 +1,5 @@
+@import './device-assistance-preferences.css';
+
 :root {
   --afpc-surface: hsl(210 28% 96%);
   --afpc-panel: hsl(0 0% 100%);
@@ -10,6 +12,7 @@
   --afpc-action-start: hsl(184 74% 34% / .96);
   --afpc-action-end: hsl(214 70% 42% / .9);
 }
+
 
 .afpc-workforce { color: var(--afpc-text); display: grid; gap: 1.25rem; }
 .afpc-workforce > header { align-items: end; display: flex; gap: 2rem; justify-content: space-between; }

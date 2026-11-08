@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.0 - 2026-11-08
+
+- Add one controlled device-assistance preferences surface with independently
+  supplied enablement, availability, preparation and detail state. Keep opt-out
+  possible after a runtime becomes unavailable. Preparation requires an
+  explicit click and an enabled, available, idle feature.
+- Keep runtime detection, models, downloads, device storage and all permission
+  decisions in application adapters. Export the component independently.
+- Supply an independent stylesheet. The current renderer uses web DOM;
+  sharing its controlled state contract does not implement a native renderer.
+- Four component cases, package hygiene, typecheck and build pass. Host browser
+  acceptance separately verifies phone-authenticated preferences and reloads.
+
 ## 0.2.2 - 2026-11-06
 
 - Deprecate the compatibility workforce administration export in favor of the

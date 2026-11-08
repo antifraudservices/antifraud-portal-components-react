@@ -4,7 +4,9 @@ Reusable, product-neutral React components for identity verification, attestatio
 
 ## Status
 
-Public implementation foundation. No package has been published and no production readiness is claimed yet.
+Published presentation primitives. Applications must independently validate their
+authentication, persistence and provider integrations; this package does not
+establish end-to-end production readiness.
 
 ## Component boundary
 
@@ -14,6 +16,9 @@ Applications supply adapters and localized content. This keeps the same componen
 
 The component set covers:
 
+- controlled device-assistance preferences: user opt-in, explicit runtime
+  unavailability and separately requested preparation, without model downloads,
+  storage access or provider logic inside the component;
 - verification-method selection;
 - wallet QR and deep-link presentation;
 - presentation status and recoverable errors;
@@ -51,7 +56,25 @@ typography, light/dark/system preferences, text-size controls and the
 established navy/turquoise semantic palette instead of maintaining a second
 header implementation.
 
+## Device assistance preferences
+
+Import `DeviceAssistancePreferences` from
+`antifraud-portal-components-react/device-assistance-preferences` and its
+`antifraud-portal-components-react/device-assistance-preferences.css` stylesheet
+once in the application shell. The full package stylesheet also includes it.
+Each controlled feature supplies `enabled`, `available`, localized labels and
+`onEnabledChange`; optional `onPrepare`, `prepareLabel`, `preparing` and `detail`
+expose preparation separately. Revoking consent remains possible when an
+already-enabled runtime becomes unavailable.
+
+The host detects capabilities, persists device preferences and stops its
+workers on opt-out. Rendering or opting in never downloads a model. These
+preferences grant no account, profile, subject or microphone permission. This
+renderer uses web DOM; a native renderer remains future work over the same
+controlled contract.
+
 ## Protocol boundary
+
 
 The interface starts an OpenID for Verifiable Presentations journey and displays the result reported by a trusted verifier. It must not label that result as a newly issued credential.
 

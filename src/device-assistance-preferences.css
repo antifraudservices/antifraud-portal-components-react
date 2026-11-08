@@ -1,0 +1,7 @@
+.afpc-device-preferences-list { display: grid; gap: 1rem; margin-top: 1rem; }
+.afpc-device-preference { border: 1px solid var(--afpc-border, #64748b); border-radius: 1rem; padding: 1rem; }
+.afpc-device-preference > label { align-items: center; display: flex; gap: .75rem; font-weight: 700; }
+.afpc-device-preference input { accent-color: #087eac; height: 1.1rem; width: 1.1rem; }
+.afpc-device-preference > p { color: inherit; opacity: .85; margin: .5rem 0; }
+.afpc-device-preference > button { background: var(--afpc-emerald, #168347); border: 0; border-radius: .75rem; color: #fff; cursor: pointer; font: inherit; font-weight: 700; margin-top: .75rem; padding: .75rem 1rem; }
+.afpc-device-preference > button:disabled { cursor: not-allowed; opacity: .55; }
