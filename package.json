@@ -9,6 +9,10 @@
     "./dist/conversation-surface.js": "./dist/conversation-surface.web.js"
   },
   "exports": {
+    "./subject-access-request-panel": {
+      "types": "./dist/subject-access-request-panel.d.ts",
+      "default": "./dist/subject-access-request-panel.js"
+    },
     "./identity-entry.css": "./dist/identity-entry.css",
     "./device-assistance-preferences.css": "./dist/device-assistance-preferences.css",
     "./device-assistance-preferences": {

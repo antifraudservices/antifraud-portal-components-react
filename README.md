@@ -22,6 +22,11 @@ components do not upload selected files or turn a requested review into verified
 evidence. Import them from their named subpaths or the package root; their neutral
 styles are included in `styles.css` and independently in `identity-entry.css`.
 
+`SubjectAccessRequestPanel` renders host-provided subject locators, resolved
+identity, requested sections and pending status. It emits resolution/request
+intentions through callbacks; neither a found subject nor a pending request
+grants access. The component performs no network or storage operation.
+
 The component set covers:
 
 - controlled device-assistance preferences: user opt-in, explicit runtime

@@ -109,6 +109,33 @@
 @media (min-width: 760px) {
   .uhcp-identity-upload-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+.uhcp-access-panel { color: var(--afpc-text); display: grid; gap: 1rem; }
+.uhcp-access-panel h2, .uhcp-access-panel p { margin: 0; }
+.uhcp-access-panel > p { color: var(--afpc-muted); line-height: 1.5; }
+.uhcp-access-panel form { display: grid; gap: 1rem; }
+.uhcp-access-panel label { display: grid; font-weight: 700; gap: .4rem; }
+.uhcp-access-panel input, .uhcp-access-panel select {
+  background: var(--afpc-panel);
+  border: 1px solid var(--afpc-border);
+  border-radius: .75rem;
+  color: var(--afpc-text);
+  font: inherit;
+  padding: .8rem;
+}
+.uhcp-access-panel fieldset { border: 1px solid var(--afpc-border); border-radius: 1rem; display: grid; gap: .6rem; margin: 0; padding: 1rem; }
+.uhcp-access-panel fieldset label { align-items: center; display: flex; }
+.uhcp-access-panel button {
+  background: linear-gradient(135deg, var(--afpc-action-start), var(--afpc-action-end));
+  border: 0;
+  border-radius: .75rem;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  padding: .8rem 1rem;
+}
+.uhcp-access-panel button:disabled { cursor: not-allowed; opacity: .55; }
+.uhcp-access-panel [role="alert"] { color: #c64747; font-weight: 700; }
 .uhcp-animal-onboarding-fields { display: grid; gap: .85rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
 .uhcp-animal-onboarding-fields label { display: grid; gap: .35rem; }
 .uhcp-animal-onboarding-fields input, .uhcp-animal-onboarding-fields select { box-sizing: border-box; min-height: 2.8rem; width: 100%; }

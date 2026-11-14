@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Own a neutral subject-access request panel with host-provided locator,
+  resolved-target, section and request-status state. Unresolved targets and
+  empty section selections cannot request access; pending state grants none.
+  Two controlled UI cases pass, with no I/O or product dependency.
+
 - Own the neutral identity/entity entry form and controlled evidence workspace,
   preserving distinct dependent/controller fields, optional paired identifiers,
   selected contact requirements and separate document inputs. Evidence routes
