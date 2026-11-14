@@ -14,6 +14,14 @@ Components render state and emit typed user intentions. They do not contain tena
 
 Applications supply adapters and localized content. This keeps the same components reusable in different portals while each backend preserves its own authorization and session boundary.
 
+`IdentityEntityEditorV2` supplies legal-name, contact, optional paired identifier
+and separate identity/relationship file inputs for one controller or related
+entity. `IdentityEvidenceWorkspace` renders a host-selected subject, separate
+controller identifiers and host-provided evidence status/capabilities. These
+components do not upload selected files or turn a requested review into verified
+evidence. Import them from their named subpaths or the package root; their neutral
+styles are included in `styles.css` and independently in `identity-entry.css`.
+
 The component set covers:
 
 - controlled device-assistance preferences: user opt-in, explicit runtime

@@ -1,0 +1,131 @@
+.uhcp-identity-entity-editor, .uhcp-identity-workspace { --afpc-accent: var(--afpc-action-start); --afpc-turquoise: var(--afpc-action-start); }
+/* Neutral AF identity entry. Compatibility class names preserve existing hosts; tokens and implementation are owned here. */
+
+.uhcp-identity-workspace {
+  background: var(--afpc-panel);
+  border: 1px solid var(--afpc-border);
+  border-radius: 2rem;
+  color: var(--afpc-text);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+.uhcp-identity-workspace h2,
+.uhcp-identity-workspace h3,
+.uhcp-identity-workspace p { margin: 0; }
+.uhcp-identity-workspace-heading { max-width: 46rem; }
+.uhcp-identity-workspace-heading h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.uhcp-identity-workspace-heading p,
+.uhcp-identity-step-content > p { color: var(--afpc-muted); line-height: 1.6; margin-top: .5rem; }
+.uhcp-identity-steps { display: grid; gap: 0; list-style: none; margin: 1.75rem 0 0; padding: 0; }
+.uhcp-identity-step { display: grid; gap: 1rem; grid-template-columns: 2.25rem minmax(0, 1fr); position: relative; }
+.uhcp-identity-step:not(:last-child)::before {
+  background: var(--afpc-border);
+  content: '';
+  height: calc(100% - 2.25rem);
+  left: 1.09rem;
+  position: absolute;
+  top: 2.25rem;
+  width: 2px;
+}
+.uhcp-identity-step-number {
+  align-items: center;
+  background: var(--afpc-surface-accent);
+  border: 1px solid color-mix(in srgb, var(--afpc-turquoise) 42%, var(--afpc-border));
+  border-radius: 999px;
+  color: var(--afpc-turquoise);
+  display: flex;
+  font-weight: 900;
+  height: 2.25rem;
+  justify-content: center;
+  position: relative;
+  width: 2.25rem;
+  z-index: 1;
+}
+.uhcp-identity-step-content { padding: .25rem 0 1.75rem; }
+.uhcp-identity-step:last-child .uhcp-identity-step-content { padding-bottom: 0; }
+.uhcp-identity-subject {
+  background: var(--afpc-panel-muted);
+  border-radius: 1rem;
+  display: grid;
+  gap: .2rem;
+  margin-top: 1rem;
+  padding: .9rem 1rem;
+}
+.uhcp-identity-subject span,
+.uhcp-identity-subject small { color: var(--afpc-muted); font-size: .78rem; }
+.uhcp-identity-empty { color: var(--afpc-muted); margin-top: 1rem !important; }
+.uhcp-identity-identifiers { display: grid; gap: .65rem; list-style: none; margin: 1rem 0 0; padding: 0; }
+.uhcp-identity-identifiers button {
+  align-items: center;
+  background: var(--afpc-panel-muted);
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  color: var(--afpc-text);
+  display: flex;
+  font: inherit;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: .9rem 1rem;
+  text-align: left;
+  width: 100%;
+}
+.uhcp-identity-identifiers button:not(:disabled) { cursor: pointer; }
+.uhcp-identity-identifiers button:not(:disabled):hover { border-color: var(--afpc-turquoise); }
+.uhcp-identity-identifiers button:disabled { opacity: 1; }
+.uhcp-identity-identifiers button > span:first-child { display: grid; gap: .25rem; }
+.uhcp-identity-identifiers small { color: var(--afpc-muted); }
+.uhcp-identity-status { border-radius: 999px; font-size: .72rem; font-weight: 800; padding: .35rem .6rem; }
+.uhcp-identity-status-verified { background: color-mix(in srgb, var(--afpc-emerald) 15%, transparent); color: var(--afpc-emerald); }
+.uhcp-identity-status-pending { background: color-mix(in srgb, var(--afpc-attention) 18%, transparent); color: color-mix(in srgb, var(--afpc-attention) 72%, var(--afpc-text)); }
+.uhcp-identity-status-rejected { background: color-mix(in srgb, #c64747 14%, transparent); color: #c64747; }
+.uhcp-identity-secondary-action {
+  background: transparent;
+  border: 1px solid var(--afpc-border);
+  border-radius: .85rem;
+  color: var(--afpc-text);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  margin-top: 1rem;
+  min-height: 2.75rem;
+  padding: .65rem 1rem;
+}
+.uhcp-identity-secondary-action:hover { border-color: var(--afpc-turquoise); color: var(--afpc-turquoise); }
+.uhcp-identity-upload-actions { display: grid; gap: .75rem; margin-top: 1rem; }
+.uhcp-identity-upload-action {
+  background: var(--afpc-panel-muted);
+  border: 1px solid var(--afpc-border);
+  border-radius: 1rem;
+  color: var(--afpc-text);
+  cursor: pointer;
+  display: grid;
+  font: inherit;
+  gap: .25rem;
+  padding: 1rem;
+  text-align: left;
+}
+.uhcp-identity-upload-action:hover { border-color: var(--afpc-turquoise); }
+.uhcp-identity-upload-action:disabled { cursor: not-allowed; opacity: .6; }
+.uhcp-identity-upload-action small { color: var(--afpc-muted); line-height: 1.45; }
+@media (min-width: 760px) {
+  .uhcp-identity-upload-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.uhcp-animal-onboarding-fields { display: grid; gap: .85rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.uhcp-animal-onboarding-fields label { display: grid; gap: .35rem; }
+.uhcp-animal-onboarding-fields input, .uhcp-animal-onboarding-fields select { box-sizing: border-box; min-height: 2.8rem; width: 100%; }
+.uhcp-animal-onboarding-v2 details > .uhcp-animal-onboarding-fields,
+.uhcp-animal-onboarding-v2 details > .uhcp-identity-entity-editor { border-top:1px solid var(--afpc-border, #d9dee7); padding:1rem; }
+.uhcp-animal-owner-kind { border:0!important; display:flex; gap:1rem; grid-column:1/-1; padding:0!important; }
+.uhcp-animal-owner-kind label,.uhcp-animal-regional-identifier { align-items:center; display:flex!important; gap:.45rem; }
+.uhcp-animal-owner-kind input,.uhcp-animal-regional-identifier input { min-height:auto!important; width:auto!important; }
+.uhcp-identity-entity-editor { display:grid; gap:1rem; }
+.uhcp-identity-entity-heading-row { align-items:stretch; display:grid; gap:1rem; grid-template-columns:minmax(0,1fr) minmax(12rem,.7fr); }
+.uhcp-identity-entity-relationship { align-content:center; background:var(--afpc-panel-muted, #f4f7fa); border:1px solid var(--afpc-border, #d9dee7); border-radius:1rem; display:grid; gap:.35rem; padding:1rem; }
+.uhcp-identity-entity-relationship span { color:var(--afpc-muted, #5f6875); font-size:.85rem; font-weight:750; }
+.uhcp-identity-entity-editor input,.uhcp-identity-entity-editor select { background:var(--afpc-panel); border:1px solid var(--afpc-border); border-radius:.75rem; color:var(--afpc-text); font:inherit; padding:.7rem .8rem; }
+.uhcp-identity-entity-evidence { background:var(--afpc-panel-muted); border:1px solid var(--afpc-border); border-radius:1rem; color:var(--afpc-text); margin:0; padding:1rem; }
+.uhcp-identity-entity-evidence legend { color:var(--afpc-text); font-weight:800; padding:0 .35rem; }
+.uhcp-identity-entity-contact-wide,.uhcp-animal-controller-confirmation { grid-column:1/-1; }
+.uhcp-animal-owner-name { grid-column:1/-1; }
+.uhcp-animal-controller-confirmation { align-items:center; background:color-mix(in srgb,var(--afpc-turquoise) 12%,var(--afpc-panel)); border:1px solid color-mix(in srgb,var(--afpc-turquoise) 30%,var(--afpc-border)); border-radius:.75rem; color:var(--afpc-text); display:flex!important; padding:.75rem; }
+.uhcp-animal-controller-confirmation input { accent-color:var(--afpc-turquoise); min-height:auto!important; width:auto!important; }
+@media (max-width: 42rem) { .uhcp-identity-entity-heading-row { grid-template-columns:1fr; } }

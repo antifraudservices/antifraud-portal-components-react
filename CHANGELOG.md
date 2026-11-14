@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Own the neutral identity/entity entry form and controlled evidence workspace,
+  preserving distinct dependent/controller fields, optional paired identifiers,
+  selected contact requirements and separate document inputs. Evidence routes
+  remain host intentions and pending readback remains pending. Export both
+  independently with neutral styles; six new and four retained identity tests
+  and the full typecheck pass. No application authority or storage is added.
+
 ## 0.3.0 - 2026-11-08
 
 - Add one controlled device-assistance preferences surface with independently

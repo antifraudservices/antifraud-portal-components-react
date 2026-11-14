@@ -9,6 +9,7 @@
     "./dist/conversation-surface.js": "./dist/conversation-surface.web.js"
   },
   "exports": {
+    "./identity-entry.css": "./dist/identity-entry.css",
     "./device-assistance-preferences.css": "./dist/device-assistance-preferences.css",
     "./device-assistance-preferences": {
       "types": "./dist/device-assistance-preferences.d.ts",
@@ -25,6 +26,14 @@
     "./identity-evidence-editor": {
       "types": "./dist/identity-evidence-editor.d.ts",
       "default": "./dist/identity-evidence-editor.js"
+    },
+    "./identity-entity-editor-v2": {
+      "types": "./dist/identity-entity-editor-v2.d.ts",
+      "default": "./dist/identity-entity-editor-v2.js"
+    },
+    "./identity-evidence-workspace": {
+      "types": "./dist/identity-evidence-workspace.d.ts",
+      "default": "./dist/identity-evidence-workspace.js"
     },
     "./environment-selector": {
       "types": "./dist/environment-selector.d.ts",
@@ -65,7 +74,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs'); for(const file of ['styles.css','device-assistance-preferences.css'])fs.copyFileSync('src/'+file,'dist/'+file)\"",
+    "build": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs'); for(const file of ['styles.css','device-assistance-preferences.css','identity-entry.css'])fs.copyFileSync('src/'+file,'dist/'+file)\"",
     "test": "vitest run --exclude test/organization-workforce-administration.test.tsx",
     "test:legacy:workforce": "vitest run test/organization-workforce-administration.test.tsx",
     "typecheck": "tsc -p tsconfig.json --noEmit"

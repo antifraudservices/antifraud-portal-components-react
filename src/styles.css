@@ -1,4 +1,5 @@
 @import './device-assistance-preferences.css';
+@import './identity-entry.css';
 
 :root {
   --afpc-surface: hsl(210 28% 96%);
