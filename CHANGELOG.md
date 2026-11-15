@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Include the three existing workforce compatibility cases in the normal test
+  command because the deprecated component remains publicly exported. Retain
+  the optional focused command; this changes no runtime or public API. Earlier
+  44-case results excluded this suite and are not full public-surface coverage.
+  The full default suite now passes 47 cases in 13 suites, with strict typecheck,
+  build and source/emitted privacy checks passing.
+
 - Add controlled recipient activation and existing-professional profile panels,
   preserving invitation/evidence separation, host resolution and profile
   selection before PIN enrollment. Reuse the neutral Common profile target and

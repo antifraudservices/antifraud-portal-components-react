@@ -88,7 +88,7 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs'); for(const file of ['styles.css','device-assistance-preferences.css','identity-entry.css','professional-profile.css'])fs.copyFileSync('src/'+file,'dist/'+file)\"",
-    "test": "vitest run --exclude test/organization-workforce-administration.test.tsx",
+    "test": "vitest run",
     "test:legacy:workforce": "vitest run test/organization-workforce-administration.test.tsx",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
