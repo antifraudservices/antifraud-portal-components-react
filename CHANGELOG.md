@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Pin public Common UI 1.3.0 for the controlled portal renderers and neutral
+  theme aliases.
+
 - Include the three existing workforce compatibility cases in the normal test
   command because the deprecated component remains publicly exported. Retain
   the optional focused command; this changes no runtime or public API. Earlier
