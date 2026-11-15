@@ -9,6 +9,20 @@
     "./dist/conversation-surface.js": "./dist/conversation-surface.web.js"
   },
   "exports": {
+    "./professional-profile.css": "./dist/professional-profile.css",
+    "./professional-profile-activation-panel": {
+      "types": "./dist/professional-profile-activation-panel.d.ts",
+      "default": "./dist/professional-profile-activation-panel.js"
+    },
+    "./existing-professional-profile-panel": {
+      "types": "./dist/existing-professional-profile-panel.d.ts",
+      "default": "./dist/existing-professional-profile-panel.js"
+    },
+    "./subject-access-request-panel": {
+      "types": "./dist/subject-access-request-panel.d.ts",
+      "default": "./dist/subject-access-request-panel.js"
+    },
+    "./identity-entry.css": "./dist/identity-entry.css",
     "./device-assistance-preferences.css": "./dist/device-assistance-preferences.css",
     "./device-assistance-preferences": {
       "types": "./dist/device-assistance-preferences.d.ts",
@@ -25,6 +39,14 @@
     "./identity-evidence-editor": {
       "types": "./dist/identity-evidence-editor.d.ts",
       "default": "./dist/identity-evidence-editor.js"
+    },
+    "./identity-entity-editor-v2": {
+      "types": "./dist/identity-entity-editor-v2.d.ts",
+      "default": "./dist/identity-entity-editor-v2.js"
+    },
+    "./identity-evidence-workspace": {
+      "types": "./dist/identity-evidence-workspace.d.ts",
+      "default": "./dist/identity-evidence-workspace.js"
     },
     "./environment-selector": {
       "types": "./dist/environment-selector.d.ts",
@@ -65,7 +87,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs'); for(const file of ['styles.css','device-assistance-preferences.css'])fs.copyFileSync('src/'+file,'dist/'+file)\"",
+    "build": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs'); for(const file of ['styles.css','device-assistance-preferences.css','identity-entry.css','professional-profile.css'])fs.copyFileSync('src/'+file,'dist/'+file)\"",
     "test": "vitest run --exclude test/organization-workforce-administration.test.tsx",
     "test:legacy:workforce": "vitest run test/organization-workforce-administration.test.tsx",
     "typecheck": "tsc -p tsconfig.json --noEmit"
@@ -74,6 +96,10 @@
     "node": ">=24.0.0"
   },
   "license": "Apache-2.0",
+  "dependencies": {
+    "antifraud-common-components-react": "1.2.1",
+    "jsqr": "1.4.0"
+  },
   "peerDependencies": {
     "@kesha-antonov/react-native-chat": "^6.0.1",
     "react": ">=18.3.0",

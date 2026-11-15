@@ -1,5 +1,26 @@
 # Changelog
 
+## Unreleased
+
+- Add controlled recipient activation and existing-professional profile panels,
+  preserving invitation/evidence separation, host resolution and profile
+  selection before PIN enrollment. Reuse the neutral Common profile target and
+  real QR decoder; media capture requires an explicit action and cleanup.
+  Nine focused cases and the full typecheck pass; no browser authority or
+  persistence is introduced.
+
+- Own a neutral subject-access request panel with host-provided locator,
+  resolved-target, section and request-status state. Unresolved targets and
+  empty section selections cannot request access; pending state grants none.
+  Two controlled UI cases pass, with no I/O or product dependency.
+
+- Own the neutral identity/entity entry form and controlled evidence workspace,
+  preserving distinct dependent/controller fields, optional paired identifiers,
+  selected contact requirements and separate document inputs. Evidence routes
+  remain host intentions and pending readback remains pending. Export both
+  independently with neutral styles; six new and four retained identity tests
+  and the full typecheck pass. No application authority or storage is added.
+
 ## 0.3.0 - 2026-11-08
 
 - Add one controlled device-assistance preferences surface with independently
