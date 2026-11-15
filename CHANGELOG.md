@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.0 - 2026-11-14
 
 - Pin public Common UI 1.3.0 for the controlled portal renderers and neutral
   theme aliases.
