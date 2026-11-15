@@ -74,34 +74,34 @@ export function IdentityEntityEditorV2({
     setIdentifierType(requireIdentifier ? identifierTypeOptions?.[value][0]?.value ?? 'national_identity_card' : '')
   }
 
-  return <div className="uhcp-identity-entity-editor">
-    <div className="uhcp-identity-entity-heading-row">
-      <fieldset className="uhcp-animal-owner-kind"><legend>{copy.entityType}</legend>
+  return <div className="afpc-identity-entity-editor">
+    <div className="afpc-identity-entity-heading-row">
+      <fieldset className="afpc-animal-owner-kind"><legend>{copy.entityType}</legend>
         <label><input type="radio" name={name('controllerKind')} value="person" checked={entityType === 'person'} onChange={() => selectEntity('person')}/> {copy.personEntity}</label>
         <label><input type="radio" name={name('controllerKind')} value="organization" checked={entityType === 'organization'} onChange={() => selectEntity('organization')}/> {copy.organizationEntity}</label>
       </fieldset>
-      <div className="uhcp-identity-entity-relationship">
+      <div className="afpc-identity-entity-relationship">
         <span>{copy.relationship}</span>
         {mode === 'controller'
           ? <><strong>{copy.responsibleParty}</strong><input type="hidden" name={name('relationship')} value="owner"/></>
           : <select name={name('relationship')} aria-label={copy.relationship} required defaultValue={relationshipOptions[0]?.value}>{relationshipOptions.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}</select>}
       </div>
     </div>
-    <div className="uhcp-animal-onboarding-fields">
-      <label className="uhcp-animal-owner-name">{copy.fullLegalName}<input name={name('controllerLegalName')} required maxLength={160} autoComplete={entityType === 'person' ? 'name' : 'organization'}/></label>
+    <div className="afpc-animal-onboarding-fields">
+      <label className="afpc-animal-owner-name">{copy.fullLegalName}<input name={name('controllerLegalName')} required maxLength={160} autoComplete={entityType === 'person' ? 'name' : 'organization'}/></label>
       <label>{copy.country}{countryOptions.length ? <select name={name('controllerCountry')} required={identifierRequired} value={country} onChange={event => setCountry(event.currentTarget.value)}><option value="" disabled>{copy.countryPlaceholder ?? copy.country}</option>{countryOptions.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}</select> : <input name={name('controllerCountry')} required={identifierRequired} pattern="[A-Za-z]{2}" maxLength={2} autoComplete="country" onChange={event => setCountry(event.currentTarget.value.toUpperCase())}/>}</label>
-      <label className="uhcp-animal-regional-identifier"><input type="checkbox" checked={regional} disabled={!regions.length} onChange={event => setRegional(event.currentTarget.checked)}/> {copy.regionalIdentifier}</label>
+      <label className="afpc-animal-regional-identifier"><input type="checkbox" checked={regional} disabled={!regions.length} onChange={event => setRegional(event.currentTarget.checked)}/> {copy.regionalIdentifier}</label>
       <label>{copy.region}<select name={name('controllerRegion')} required={regional} disabled={!regional}><option value=""/>{regions.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
       <label>{copy.identifierType}{identifierTypeOptions ? <select name={name('controllerIdentifierType')} required={identifierRequired} key={entityType} value={identifierType} onChange={event => setIdentifierType(event.currentTarget.value)}>{!requireIdentifier ? <option value=""/> : null}{identifierTypeOptions[entityType].map(option => <option key={option.value} value={option.value}>{option.label}</option>)}</select> : <input name={name('controllerIdentifierType')} required={identifierRequired} value={identifierType} onChange={event => setIdentifierType(event.currentTarget.value)} maxLength={80}/>}</label>
       <label>{copy.identifierValue}<input name={name('controllerIdentifierValue')} required={identifierRequired} value={identifierValue} onChange={event => setIdentifierValue(event.currentTarget.value)} maxLength={120} autoComplete="off"/></label>
-      <label className="uhcp-identity-entity-contact-wide">{copy.email}<input name={name('controllerEmail')} type="email" autoComplete="email" required={requireEmail}/></label>
+      <label className="afpc-identity-entity-contact-wide">{copy.email}<input name={name('controllerEmail')} type="email" autoComplete="email" required={requireEmail}/></label>
       <label>{copy.telephone}<input name={name('controllerTelephone')} type="tel" autoComplete="tel" required={requireTelephone}/></label>
-      {mode === 'controller' ? <label className="uhcp-animal-controller-confirmation"><input type="checkbox" checked disabled readOnly aria-disabled="true"/> {copy.controllerConfirmation}</label> : null}
+      {mode === 'controller' ? <label className="afpc-animal-controller-confirmation"><input type="checkbox" checked disabled readOnly aria-disabled="true"/> {copy.controllerConfirmation}</label> : null}
       {contactError ? <p role="alert">{contactError}</p> : null}
     </div>
-    {showEvidence ? <fieldset className="uhcp-identity-entity-evidence">
+    {showEvidence ? <fieldset className="afpc-identity-entity-evidence">
       <legend>{copy.evidence}</legend>
-      <div className="uhcp-animal-onboarding-fields">
+      <div className="afpc-animal-onboarding-fields">
         <label>{copy.verificationMethod}<select name={name('verificationMethod')} defaultValue="pipp"><option value="pipp">{copy.physicalInPerson}</option><option value="sripp">{copy.supervisedRemote}</option><option value="eid">{copy.electronicId}</option><option value="uripp">{copy.unsupervisedRemote}</option></select></label>
         <label>{copy.identityDocument}<input name={name('ownerDocument')} type="file" accept="application/pdf,image/jpeg,image/png"/></label>
         <label>{copy.relationshipDocument}<input name={name('relationshipDocument')} type="file" accept="application/pdf,image/jpeg,image/png"/></label>

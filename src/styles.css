@@ -1,17 +1,23 @@
+@import 'antifraud-common-components-react/styles.css';
 @import './device-assistance-preferences.css';
 @import './identity-entry.css';
+@import './professional-profile.css';
 
 :root {
-  --afpc-surface: hsl(210 28% 96%);
-  --afpc-panel: hsl(0 0% 100%);
-  --afpc-panel-muted: hsl(210 26% 94%);
-  --afpc-text: hsl(218 39% 15%);
-  --afpc-muted: hsl(216 15% 38%);
-  --afpc-border: hsl(212 21% 80%);
-  --afpc-emerald: hsl(157 67% 31%);
-  --afpc-attention: hsl(29 82% 61%);
-  --afpc-action-start: hsl(184 74% 34% / .96);
-  --afpc-action-end: hsl(214 70% 42% / .9);
+  --afpc-surface: var(--afcc-surface, hsl(210 28% 96%));
+  --afpc-panel: var(--afcc-panel, hsl(0 0% 100%));
+  --afpc-panel-muted: var(--afcc-panel-muted, hsl(210 26% 94%));
+  --afpc-text: var(--afcc-text, hsl(218 39% 15%));
+  --afpc-muted: var(--afcc-muted, hsl(216 15% 38%));
+  --afpc-border: var(--afcc-border, hsl(212 21% 80%));
+  --afpc-emerald: var(--afcc-emerald, hsl(157 67% 31%));
+  --afpc-attention: var(--afcc-attention, hsl(29 82% 61%));
+  --afpc-action-start: var(--afcc-action-start, hsl(184 74% 34% / .96));
+  --afpc-action-end: var(--afcc-action-end, hsl(214 70% 42% / .9));
+  --afpc-accent: var(--afcc-accent, var(--afpc-action-start));
+  --afpc-turquoise: var(--afcc-turquoise, var(--afpc-action-start));
+  --afpc-line: var(--afcc-border, var(--afpc-border));
+  --afpc-surface-accent: var(--afcc-panel-muted, var(--afpc-panel-muted));
 }
 
 

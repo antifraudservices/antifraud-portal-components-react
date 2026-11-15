@@ -99,8 +99,8 @@ export function SubjectAccessRequestPanel({
   }
 
   return (
-    <section className="uhcp-access-panel" aria-labelledby="uhcp-access-request-title">
-      <h2 id="uhcp-access-request-title">{copy.title}</h2>
+    <section className="afpc-access-panel" aria-labelledby="afpc-access-request-title">
+      <h2 id="afpc-access-request-title">{copy.title}</h2>
       <p>{copy.description}</p>
       <form onSubmit={resolve}>
         <label>

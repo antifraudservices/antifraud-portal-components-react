@@ -27,6 +27,15 @@ identity, requested sections and pending status. It emits resolution/request
 intentions through callbacks; neither a found subject nor a pending request
 grants access. The component performs no network or storage operation.
 
+`ProfessionalProfileActivationPanel` emits an invitation/activation code and
+matching PIN entries. `ExistingProfessionalProfilePanel` separately accepts
+existing professional evidence, asks the host to resolve it, then renders the
+host's profile selection before enrollment. QR camera/image reading is an
+explicit user action; decoding alone does not verify a credential. The shared
+`toExistingProfessionalProfileRequest` serializer preserves these distinct
+request shapes. Neither panel selects an issuer, signs, grants a role or stores
+the PIN. Their styles are included in `styles.css` and `professional-profile.css`.
+
 The component set covers:
 
 - controlled device-assistance preferences: user opt-in, explicit runtime

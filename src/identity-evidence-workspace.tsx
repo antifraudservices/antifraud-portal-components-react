@@ -76,39 +76,39 @@ export function IdentityEvidenceWorkspace({
   onUploadEvidence?: (mode: IdentityEvidenceUploadMode) => void
 }>) {
   return (
-    <section className="uhcp-identity-workspace" aria-labelledby="identity-evidence-workspace-title">
-      <header className="uhcp-identity-workspace-heading">
+    <section className="afpc-identity-workspace" aria-labelledby="identity-evidence-workspace-title">
+      <header className="afpc-identity-workspace-heading">
         <h2 id="identity-evidence-workspace-title">{copy.title}</h2>
         <p>{copy.intro}</p>
       </header>
 
-      <ol className="uhcp-identity-steps">
-        <li className="uhcp-identity-step">
+      <ol className="afpc-identity-steps">
+        <li className="afpc-identity-step">
           <StepNumber value={1} />
-          <div className="uhcp-identity-step-content">
+          <div className="afpc-identity-step-content">
             <h3>{copy.subjectStepTitle}</h3>
             <p>{copy.subjectStepBody}</p>
-            <div className="uhcp-identity-subject">
+            <div className="afpc-identity-subject">
               <span>{copy.selectedSubject}</span>
               <strong>{subject.displayName}</strong>
             </div>
             {capabilities.editSubject && onEditSubject ? (
-              <button type="button" className="uhcp-identity-secondary-action" onClick={onEditSubject}>
+              <button type="button" className="afpc-identity-secondary-action" onClick={onEditSubject}>
                 {copy.editSubject}
               </button>
             ) : null}
           </div>
         </li>
 
-        <li className="uhcp-identity-step">
+        <li className="afpc-identity-step">
           <StepNumber value={2} />
-          <div className="uhcp-identity-step-content">
+          <div className="afpc-identity-step-content">
             <h3>{copy.controllerStepTitle}</h3>
             <p>{copy.controllerStepBody}</p>
             {identifiers.length === 0 ? (
-              <p className="uhcp-identity-empty">{copy.noIdentifiers}</p>
+              <p className="afpc-identity-empty">{copy.noIdentifiers}</p>
             ) : (
-              <ul className="uhcp-identity-identifiers">
+              <ul className="afpc-identity-identifiers">
                 {identifiers.map((identifier) => (
                   <li key={identifier.id}>
                     <button
@@ -121,7 +121,7 @@ export function IdentityEvidenceWorkspace({
                         <strong>{identifier.typeLabel}</strong>
                         <small>{identifier.jurisdictionLabel} · {identifier.displayValue}</small>
                       </span>
-                      <span className={`uhcp-identity-status uhcp-identity-status-${identifier.status}`}>
+                      <span className={`afpc-identity-status afpc-identity-status-${identifier.status}`}>
                         {copy.statusLabels[identifier.status]}
                       </span>
                     </button>
@@ -130,19 +130,19 @@ export function IdentityEvidenceWorkspace({
               </ul>
             )}
             {capabilities.addIdentifier && onAddIdentifier ? (
-              <button type="button" className="uhcp-identity-secondary-action" onClick={onAddIdentifier}>
+              <button type="button" className="afpc-identity-secondary-action" onClick={onAddIdentifier}>
                 {copy.addIdentifier}
               </button>
             ) : null}
           </div>
         </li>
 
-        <li className="uhcp-identity-step">
+        <li className="afpc-identity-step">
           <StepNumber value={3} />
-          <div className="uhcp-identity-step-content">
+          <div className="afpc-identity-step-content">
             <h3>{copy.evidenceStepTitle}</h3>
             <p>{copy.evidenceStepBody}</p>
-            <div className="uhcp-identity-upload-actions">
+            <div className="afpc-identity-upload-actions">
               {capabilities.selfUpload ? (
                 <UploadAction
                   title={copy.selfUpload}
@@ -175,7 +175,7 @@ export function IdentityEvidenceWorkspace({
 }
 
 function StepNumber({ value }: Readonly<{ value: number }>) {
-  return <span className="uhcp-identity-step-number" aria-hidden="true">{value}</span>
+  return <span className="afpc-identity-step-number" aria-hidden="true">{value}</span>
 }
 
 function UploadAction({
@@ -190,7 +190,7 @@ function UploadAction({
   disabled: boolean
 }>) {
   return (
-    <button type="button" className="uhcp-identity-upload-action" aria-label={title} onClick={onClick} disabled={disabled}>
+    <button type="button" className="afpc-identity-upload-action" aria-label={title} onClick={onClick} disabled={disabled}>
       <strong>{title}</strong>
       {help ? <small>{help}</small> : null}
     </button>

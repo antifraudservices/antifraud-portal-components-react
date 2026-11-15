@@ -5,6 +5,8 @@ import { describe, expect, it, vi } from 'vitest'
 
 import { QualificationEvidenceEditor } from '../src/qualification-evidence-editor'
 
+const syntheticQualificationSystem = 'https://example.invalid/university/qualifications'
+
 const baseProps = {
   employees: [
     { id: 'employee-1', label: 'Ada Example — active', active: true },
@@ -35,7 +37,7 @@ async function completeForm() {
   await userEvent.type(screen.getByLabelText('Qualification title'), 'Degree in Medicine')
   await userEvent.selectOptions(screen.getByLabelText('Qualification type'), 'degree')
   await userEvent.type(screen.getByLabelText('Qualification identifier'), 'degree-opaque')
-  await userEvent.type(screen.getByLabelText('Identifier system'), 'https://university.example/qualifications')
+  await userEvent.type(screen.getByLabelText('Identifier system'), syntheticQualificationSystem)
   await userEvent.type(screen.getByLabelText('Issuer legal identifier'), 'university-legal-id')
   await userEvent.type(screen.getByLabelText('Issuer jurisdiction'), 'ES')
 }
@@ -73,7 +75,7 @@ describe('QualificationEvidenceEditor', () => {
         title: 'Degree in Medicine',
         type: 'degree',
         identifier: {
-          system: 'https://university.example/qualifications',
+          system: syntheticQualificationSystem,
           value: 'degree-opaque',
         },
       },

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Add controlled recipient activation and existing-professional profile panels,
+  preserving invitation/evidence separation, host resolution and profile
+  selection before PIN enrollment. Reuse the neutral Common profile target and
+  real QR decoder; media capture requires an explicit action and cleanup.
+  Nine focused cases and the full typecheck pass; no browser authority or
+  persistence is introduced.
+
 - Own a neutral subject-access request panel with host-provided locator,
   resolved-target, section and request-status state. Unresolved targets and
   empty section selections cannot request access; pending state grants none.
