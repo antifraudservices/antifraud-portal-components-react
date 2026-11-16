@@ -1,186 +1,59 @@
 # Antifraud Portal Components React
 
-Reusable, product-neutral React components for identity verification, attestation, wallet presentation, and provider-issued credential journeys.
+Product-neutral React components for identity review, wallet presentation,
+professional activation and provider-issued credential journeys. Applications
+supply controlled state, localized content and trusted backend adapters.
 
-## Status
+## Choose a component
 
-Published presentation primitives. Applications must independently validate their
-authentication, persistence and provider integrations; this package does not
-establish end-to-end production readiness.
+| Use case | Components |
+| --- | --- |
+| Identity and relationships | `IdentityEntityEditorV2`, `IdentityEvidenceWorkspace`, `IdentityEvidenceEditor` |
+| Subject access requests | `SubjectAccessRequestPanel` |
+| Professional activation | `ProfessionalProfileActivationPanel`, `ExistingProfessionalProfilePanel` |
+| Qualifications | `QualificationEvidenceEditor`, `ProfessionalQualificationCard` |
+| Device assistance | `DeviceAssistancePreferences` |
 
-## Component boundary
+The package also provides wallet QR/deep-link presentation, verifier and
+issuance status, attestation review, workforce assignment controls,
+notification previews, a shared shell, Personal Trust workspace, Professional
+operations home, and neutral Places/Services/Products catalog presentation.
+Import components from their named subpaths or the package root.
 
-Components render state and emit typed user intentions. They do not contain tenant hosts, product names, secrets, signing code, trust decisions, or hidden network calls.
+## Connect the host application
 
-Applications supply adapters and localized content. This keeps the same components reusable in different portals while each backend preserves its own authorization and session boundary.
+Components render state and emit typed intentions. The application resolves
+eligible actions and handles authentication, provider calls, uploads,
+persistence, verification and signatures in its trusted backend.
 
-`IdentityEntityEditorV2` supplies legal-name, contact, optional paired identifier
-and separate identity/relationship file inputs for one controller or related
-entity. `IdentityEvidenceWorkspace` renders a host-selected subject, separate
-controller identifiers and host-provided evidence status/capabilities. These
-components do not upload selected files or turn a requested review into verified
-evidence. Import them from their named subpaths or the package root; their neutral
-styles are included in `styles.css` and independently in `identity-entry.css`.
+Follow [identity and workforce integration](docs/PORTAL_OWNERSHIP.md) for the
+activation, access, qualification and provider workflows. It describes the
+server checks and the distinction between presentation and credential issuance.
 
-`SubjectAccessRequestPanel` renders host-provided subject locators, resolved
-identity, requested sections and pending status. It emits resolution/request
-intentions through callbacks; neither a found subject nor a pending request
-grants access. The component performs no network or storage operation.
+Import `styles.css` once, or use the relevant independent stylesheet such as
+`identity-entry.css` or `professional-profile.css`. The shared shell accepts a
+header slot for the common `PortalHeader`, keeping typography, theme and text
+size consistent across applications. React and React DOM are peer dependencies.
 
-`ProfessionalProfileActivationPanel` emits an invitation/activation code and
-matching PIN entries. `ExistingProfessionalProfilePanel` separately accepts
-existing professional evidence, asks the host to resolve it, then renders the
-host's profile selection before enrollment. QR camera/image reading is an
-explicit user action; decoding alone does not verify a credential. The shared
-`toExistingProfessionalProfileRequest` serializer preserves these distinct
-request shapes. Neither panel selects an issuer, signs, grants a role or stores
-the PIN. Their styles are included in `styles.css` and `professional-profile.css`.
+## Integrate device assistance
 
-The component set covers:
+Use controlled feature state to show availability, opt-in and an explicit
+preparation action. The [device assistance guide](docs/DEVICE_ASSISTANCE.md)
+covers model downloads, worker cancellation, pending results and permissions.
+Use the independent component/CSS subpaths on account pages to avoid loading
+unrelated conversation modules.
 
-- controlled device-assistance preferences: user opt-in, explicit runtime
-  unavailability and separately requested preparation, without model downloads,
-  storage access or provider logic inside the component;
-- verification-method selection;
-- wallet QR and deep-link presentation;
-- presentation status and recoverable errors;
-- subject and relationship attestation review;
-- authoritative-provider handoff confirmation;
-- credential issuance status and receipt;
-- accessible audit-event summaries without exposing personal data;
-- collapsible employee assignment panels;
-- optional department and group proposals during invitation;
-- current-group selectors with explicit add and remove intentions;
-- assignment-change notification previews and delivery status;
-- awarding-organization lookup by legal identifier and jurisdiction;
-- employee identity and qualification evidence review with clearly separated
-  employer and source-issuer proofs.
-- professional qualification cards with independent employer, awarding-body,
-  professional-body and licence status badges plus authoritative proof details.
-- a controlled identity-evidence editor for subject evidence, relationships and
-  configurable age-over predicates, without browser-authored actor or
-  authorization fields.
-- a future controlled attachment panel for Schema.org `DigitalDocument` and
-  `MediaObject` records whose PDF, spreadsheet, Word, image, video or other
-  governed bytes are transported by the host through DIDComm `attachments[]`.
-- a controlled environment selector that labels Demo as a simulated
-  blockchain and keeps Test Network and Production disabled unless the host
-  supplies trusted server state. It never reads browser storage, query strings,
-  collection prefixes, hosts or network configuration.
-- a sector-neutral shell, Personal Trust workspace and Professional operations
-  home shared by independently deployed portals;
-- a neutral catalog surface for Places, public Services and Products whose
-  publisher, jurisdiction, sector and DCAT distribution remain backend-owned.
+## Planned attachment panel
 
-The shared shell exposes a header slot so consuming apps directly compose the
-same neutral `PortalHeader` used by Connect Health. They therefore share Inter
-typography, light/dark/system preferences, text-size controls and the
-established navy/turquoise semantic palette instead of maintaining a second
-header implementation.
+The [attachment-panel use case](docs/ATTACHMENT_PANEL_USE_CASE.md) describes the
+planned Schema.org metadata renderer and protected DIDComm transport boundary.
 
-## Device assistance preferences
+## Validate the application
 
-Import `DeviceAssistancePreferences` from
-`antifraud-portal-components-react/device-assistance-preferences` and its
-`antifraud-portal-components-react/device-assistance-preferences.css` stylesheet
-once in the application shell. The full package stylesheet also includes it.
-Each controlled feature supplies `enabled`, `available`, localized labels and
-`onEnabledChange`; optional `onPrepare`, `prepareLabel`, `preparing` and `detail`
-expose preparation separately. Revoking consent remains possible when an
-already-enabled runtime becomes unavailable.
-
-The host detects capabilities, persists device preferences and stops its
-workers on opt-out. Rendering or opting in never downloads a model. These
-preferences grant no account, profile, subject or microphone permission. This
-renderer uses web DOM; a native renderer remains future work over the same
-controlled contract.
-
-## Protocol boundary
-
-
-The interface starts an OpenID for Verifiable Presentations journey and displays the result reported by a trusted verifier. It must not label that result as a newly issued credential.
-
-A separate step asks an authorized index provider to read its authoritative source and issue a signed credential. Issuance may use OpenID for Verifiable Credential Issuance or another explicit provider protocol. The component never signs and never receives a provider signing key.
-
-## Reuse rules
-
-- React is a peer dependency.
-- Network and storage behavior are supplied through typed adapters.
-- Components are independently importable to avoid unnecessary bundle cost.
-- Long-running work is started by user actions, not by rendering.
-- Personal claims and wallet responses are not persisted by components.
-- Accessibility and keyboard operation are acceptance criteria.
-- Web and supported native wrappers require separate executable tests.
-
-## Workforce component contract
-
-Workforce components receive employee, department, group, membership,
-authorization-summary, and notification state as controlled properties. They
-emit typed intentions such as invite, add to group, remove from group, suspend,
-reactivate, or resend notification.
-
-They do not create Consent, infer authority from a selected organization, or
-call a gateway. The consuming portal and its trusted backend verify controller
-authority, persist membership changes, preserve the reusable authorization for
-the group, and create any required Communication notice. A subject or lawful
-representative authorization is displayed separately when the use case needs
-one.
-
-Organization administration belongs to a controller portal. Sector-specific
-employee journeys belong to professional portals. Both may reuse these neutral
-components. Every consuming application owns its navigation, localization,
-authentication, capability resolution and persistence.
-
-Qualification UI must never infer a university from display text. It emits a
-lookup intention containing legal identifier and jurisdiction, then renders
-the authoritative organization result returned by the host. When no
-source-issued credential exists, it labels the action as an employer
-attestation and identifies the employer signature separately.
-
-`ProfessionalQualificationCard` is controlled: it renders qualification and
-proof state supplied by the host, exposes proof-selection intentions, and
-shows the legal identifier, jurisdiction, verification time and status of the
-selected authority. It does not decide whether the user may work, access a
-subject, or perform a professional action.
-
-`QualificationEvidenceEditor` lets a controller select an active employee,
-describe a qualification, resolve the claimed issuer by legal identifier and
-jurisdiction, and select a scanned PDF, PNG, JPEG or TIFF. The host owns upload,
-SHA3-384 CID calculation, authorization, persistence, signing and notification.
-The component submits an explicit employer-attestation intention and never
-labels it as issuer verification.
-
-Attachment presentation is Schema.org-native. Components must never label or
-serialize an item as FHIR `DocumentReference`; they render controlled
-`DigitalDocument`/`MediaObject` metadata while the host owns DIDComm transport,
-binary retrieval and authorization. The reusable panel task is
-[GitHub issue #5](https://github.com/antifraudservices/antifraud-portal-components-react/issues/5).
-
-`IdentityEvidenceEditor` is used by an already authenticated workforce member.
-The host supplies opaque subject references and labels. The component emits a
-subject, relationship or age-over intention, but the trusted host supplies the
-actor, assignment, organization, group authorization, subject authorization,
-time and authoritative readback. Only threshold 18 may be projected as the
-standardized EUDI PID `age_over_18` element; other thresholds remain governed
-predicates.
-
-## Intended dependency direction
-
-```text
-antifraud-data-utils-ts
-          ↓
-antifraud-sdk-core-ts
-          ↓
-antifraud-portal-components-react
-          ↓
-portal applications
-```
-
-## Implementation gate
-
-Each visual increment is test-driven against the shared flow states. Storybook
-or screenshots may document appearance, but only interaction tests and a real
-application journey prove behavior.
+Components must be accessible and keyboard-operable. Shared tests cover their
+interaction states; consuming applications test their actual backend and
+provider journeys before deployment. Native wrappers require their own
+executable checks. See the integration guide for validation responsibilities.
 
 ## License
 

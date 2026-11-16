@@ -1,13 +1,23 @@
 # Controlled attachment panel use case
 
-The reusable panel renders Schema.org `DigitalDocument` and `MediaObject`
-metadata supplied by its host. It does not render a FHIR `DocumentReference`.
+## Display document metadata
 
-The host transports PDF, spreadsheet, Word, image, video and any other allowed
-binary through DIDComm `attachments[]`. The component displays media type,
-exact size, CID/digest, protected retrieval state, sender, purpose and distinct
-delivery, read, acceptance and signature states. It emits user intentions but
-does not upload, fetch, authorize, persist, verify or sign.
+The intended reusable panel presents Schema.org `DigitalDocument` and
+`MediaObject` metadata supplied by its host. Keep that representation distinct
+from FHIR `DocumentReference`.
 
-Implementation and interaction acceptance are tracked in
-[GitHub issue #5](https://github.com/antifraudservices/antifraud-portal-components-react/issues/5).
+Display media type, exact size, CID/digest, protected retrieval state, sender
+and purpose. Show delivery, read, acceptance and signature states independently
+so receiving bytes is not presented as accepting or signing their contents.
+
+## Connect protected transport
+
+The host sends allowed PDF, spreadsheet, Word, image, video and other binary
+content through DIDComm `attachments[]`. It owns upload, protected retrieval,
+authorization, persistence, verification and signing. The panel receives
+metadata and callbacks for the available actions.
+
+## Implementation status
+
+The reusable panel remains planned. Implementation and interaction acceptance
+are tracked in [GitHub issue #5](https://github.com/antifraudservices/antifraud-portal-components-react/issues/5).
