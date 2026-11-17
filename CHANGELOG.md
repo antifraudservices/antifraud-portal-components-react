@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.4.1 - 2026-11-17
+
+- Pin public Common UI 1.3.1. The complete 49-case suite, strict typecheck and
+  build passed against the exact archive now published as Common 1.3.1;
+  release metadata preserves the same compiled component bytes.
+
 - Keep host-provided individual details, controller details and private-evidence
   forms inside their corresponding identity steps. Optional content slots reuse
   the existing presentation without adding authentication or persistence.
