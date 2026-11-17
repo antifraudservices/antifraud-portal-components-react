@@ -1,3 +1,5 @@
+import type {ReactNode} from 'react'
+
 export type IdentityEvidenceStatus = 'verified' | 'pending' | 'rejected'
 
 export type IdentityEvidenceUploadMode =
@@ -65,6 +67,9 @@ export function IdentityEvidenceWorkspace({
   onAddIdentifier,
   onSelectIdentifier,
   onUploadEvidence,
+  subjectContent,
+  controllerContent,
+  evidenceContent,
 }: Readonly<{
   copy: IdentityEvidenceWorkspaceCopy
   subject: IdentityEvidenceSubject
@@ -74,6 +79,9 @@ export function IdentityEvidenceWorkspace({
   onAddIdentifier?: () => void
   onSelectIdentifier?: (identifierId: string) => void
   onUploadEvidence?: (mode: IdentityEvidenceUploadMode) => void
+  subjectContent?: ReactNode
+  controllerContent?: ReactNode
+  evidenceContent?: ReactNode
 }>) {
   return (
     <section className="afpc-identity-workspace" aria-labelledby="identity-evidence-workspace-title">
@@ -97,6 +105,7 @@ export function IdentityEvidenceWorkspace({
                 {copy.editSubject}
               </button>
             ) : null}
+            {subjectContent}
           </div>
         </li>
 
@@ -134,6 +143,7 @@ export function IdentityEvidenceWorkspace({
                 {copy.addIdentifier}
               </button>
             ) : null}
+            {controllerContent}
           </div>
         </li>
 
@@ -167,6 +177,7 @@ export function IdentityEvidenceWorkspace({
                 />
               ) : null}
             </div>
+            {evidenceContent}
           </div>
         </li>
       </ol>

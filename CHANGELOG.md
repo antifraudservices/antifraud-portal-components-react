@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Keep host-provided individual details, controller details and private-evidence
+  forms inside their corresponding identity steps. Optional content slots reuse
+  the existing presentation without adding authentication or persistence.
+  Eight focused tests and uncached typechecking pass.
+
 ## 0.4.0 - 2026-11-14
 
 - Pin public Common UI 1.3.0 for the controlled portal renderers and neutral

@@ -65,3 +65,22 @@ it('emits a requested evidence route while retaining the pending host readback',
  expect(onUploadEvidence).toHaveBeenCalledExactlyOnceWith('self')
  expect(screen.getByText('Pending',{exact:true})).toBeVisible();expect(screen.queryByText('Verified',{exact:true})).not.toBeInTheDocument()
 })
+
+it('keeps host subject and controller content inside their respective identity steps',()=>{
+ const Workspace=component('IdentityEvidenceWorkspace')
+ render(<Workspace copy={workspaceCopy} subject={subject} identifiers={[]} capabilities={{editSubject:false,addIdentifier:false,selfUpload:false,organizationUpload:false,professionalAttestation:false}}
+  subjectContent={<section aria-label="Subject details">Host subject readback</section>}
+  controllerContent={<section aria-label="Controller details">Host controller readback</section>}/> )
+ expect(screen.getByRole('region',{name:'Subject details'}).closest('li')).toBe(screen.getByRole('heading',{name:'Dependent'}).closest('li'))
+ expect(screen.getByRole('region',{name:'Controller details'}).closest('li')).toBe(screen.getByRole('heading',{name:'Controller'}).closest('li'))
+})
+
+it('keeps the host upload form beneath its action inside the evidence step',()=>{
+ const Workspace=component('IdentityEvidenceWorkspace'),fetch=vi.fn();vi.stubGlobal('fetch',fetch)
+ render(<Workspace copy={workspaceCopy} subject={subject} identifiers={[]} capabilities={{editSubject:false,addIdentifier:false,selfUpload:true,organizationUpload:false,professionalAttestation:false}} onUploadEvidence={vi.fn()}
+  evidenceContent={<form aria-label="Private evidence upload"><input aria-label="Evidence document" type="file"/></form>}/> )
+ const action=screen.getByRole('button',{name:/Upload private evidence/u}),form=screen.getByRole('form',{name:'Private evidence upload'})
+ expect(form.closest('li')).toBe(action.closest('li'))
+ expect(action.compareDocumentPosition(form)&Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+ expect(fetch).not.toHaveBeenCalled()
+})
