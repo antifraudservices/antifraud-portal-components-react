@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.2
 
 - Add controlled generic credential QR capture with complete manual input, explicit host verification, bounded local PNG/JPEG/inert SVG images and camera cleanup. Share camera/jsQR primitives with existing professional profile capture; capture alone conveys no verification or authority.
 
