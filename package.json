@@ -78,6 +78,10 @@
     "./verification-journey-panel": {
       "types": "./dist/verification-journey-panel.d.ts",
       "default": "./dist/verification-journey-panel.js"
+    },
+    "./credential-qr-capture": {
+      "types": "./dist/credential-qr-capture.d.ts",
+      "default": "./dist/credential-qr-capture.js"
     }
   },
   "files": [

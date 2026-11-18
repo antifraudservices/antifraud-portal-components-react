@@ -1,7 +1,7 @@
 'use client'
 
 import {useEffect,useRef,useState,type FormEvent} from 'react'
-import jsQR from 'jsqr'
+import {useCredentialQrCapture} from './credential-qr-capture-internal.js'
 import {ProfileIdentityTarget,type ProfileProtectionTargetV2} from 'antifraud-common-components-react'
 
 export type ExistingProfessionalProfileCopy=Readonly<{
@@ -40,55 +40,19 @@ export function toExistingProfessionalProfileRequest(input:ExistingProfessionalP
  return Object.freeze({country:input.country,...(input.region?{region:input.region}:{}),organizationIdentifier:input.organizationIdentifier,sectorHint:input.sector,selectedProfile:input.selectedProfile,pin:input.pin})
 }
 
-type BarcodeDetectorLike=Readonly<{detect(source:HTMLVideoElement):Promise<readonly Readonly<{rawValue:string}>[]>}>
-type BarcodeDetectorConstructor=new(options:Readonly<{formats:readonly string[]}>)=>BarcodeDetectorLike
 const list=(value:ResolvedExistingProfessionalProfile|readonly ResolvedExistingProfessionalProfile[]):readonly ResolvedExistingProfessionalProfile[]=>Array.isArray(value)?value:[value as ResolvedExistingProfessionalProfile]
 
 /** Local evidence capture and host-resolved profile selection; the host alone authorizes enrollment and device custody. */
 export function ExistingProfessionalProfilePanel({copy,sectors,countries=[],regionsByCountry={},busy,error,onScanProfessionalCredential,onReadProfessionalCredentialImage,onResolve,onSubmit}:ExistingProfessionalProfilePanelProps){
  const [method,setMethod]=useState<'credential'|'identifier'|'organization'>('credential'),[credential,setCredential]=useState(''),[identifier,setIdentifier]=useState(''),[sector,setSector]=useState(sectors[0]?.value??'')
  const [country,setCountry]=useState(''),[regional,setRegional]=useState(false),[region,setRegion]=useState(''),[organization,setOrganization]=useState('')
- const [pin,setPin]=useState(''),[confirmation,setConfirmation]=useState(''),[profiles,setProfiles]=useState<readonly ResolvedExistingProfessionalProfile[]>([]),[selected,setSelected]=useState<ResolvedExistingProfessionalProfile>(),[resolving,setResolving]=useState(false),[localError,setLocalError]=useState(''),[cameraActive,setCameraActive]=useState(false)
- const video=useRef<HTMLVideoElement>(null),canvas=useRef<HTMLCanvasElement>(null),stream=useRef<MediaStream|undefined>(undefined),timer=useRef<number|undefined>(undefined),scanResolver=useRef<((value:string|undefined)=>void)|undefined>(undefined),mounted=useRef(true),cameraEpoch=useRef(0),captureEpoch=useRef(0),resolveEpoch=useRef(0)
+ const [pin,setPin]=useState(''),[confirmation,setConfirmation]=useState(''),[profiles,setProfiles]=useState<readonly ResolvedExistingProfessionalProfile[]>([]),[selected,setSelected]=useState<ResolvedExistingProfessionalProfile>(),[resolving,setResolving]=useState(false),[localError,setLocalError]=useState('')
+ const {videoRef:video,canvasRef:canvas,cameraActive,scanCamera,readImage,stopCamera}=useCredentialQrCapture({...(onScanProfessionalCredential?{onScan:onScanProfessionalCredential}:{}),...(onReadProfessionalCredentialImage?{onReadImage:onReadProfessionalCredentialImage}:{})})
+ const mounted=useRef(true),captureEpoch=useRef(0),resolveEpoch=useRef(0)
  const failure=copy.verificationFailed??'The profile could not be resolved.'
- function stopCamera(value?:string){cameraEpoch.current++;if(timer.current!==undefined)window.clearInterval(timer.current);timer.current=undefined;stream.current?.getTracks().forEach(track=>track.stop());stream.current=undefined;if(video.current)video.current.srcObject=null;const complete=scanResolver.current;scanResolver.current=undefined;complete?.(value);if(mounted.current)setCameraActive(false)}
  useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;captureEpoch.current++;resolveEpoch.current++;stopCamera()}},[])
  function resetResolution(){resolveEpoch.current++;setProfiles([]);setSelected(undefined);setResolving(false);setPin('');setConfirmation('');setLocalError('')}
  function chooseMethod(value:typeof method){stopCamera();captureEpoch.current++;resetResolution();setMethod(value)}
- async function scanCamera():Promise<string|undefined>{
-  if(onScanProfessionalCredential)return onScanProfessionalCredential()
-  stopCamera();const epoch=cameraEpoch.current
-  const media=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false})
-  if(!mounted.current||epoch!==cameraEpoch.current||!video.current){media.getTracks().forEach(track=>track.stop());return undefined}
-  stream.current=media;video.current.srcObject=media
-  try{await video.current.play()}catch(reason){if(stream.current===media)stopCamera();throw reason}
-  if(!mounted.current||epoch!==cameraEpoch.current)return undefined
-  setCameraActive(true)
-  return new Promise(resolve=>{
-   scanResolver.current=resolve
-   const Detector=(window as typeof window&{BarcodeDetector?:BarcodeDetectorConstructor}).BarcodeDetector,detector=Detector?new Detector({formats:['qr_code']}):undefined
-   let processing=false
-   timer.current=window.setInterval(()=>{
-    if(processing||epoch!==cameraEpoch.current||!video.current)return
-    processing=true
-    void (async()=>{
-     let candidate:string|undefined
-     if(detector){candidate=(await detector.detect(video.current!))[0]?.rawValue}
-     else if(canvas.current&&video.current?.videoWidth&&video.current.videoHeight){
-      const target=canvas.current;target.width=video.current.videoWidth;target.height=video.current.videoHeight;const context=target.getContext('2d',{willReadFrequently:true})
-      if(context){context.drawImage(video.current,0,0,target.width,target.height);candidate=jsQR(context.getImageData(0,0,target.width,target.height).data,target.width,target.height)?.data}
-     }
-     if(candidate&&mounted.current&&epoch===cameraEpoch.current)stopCamera(candidate)
-    })().catch(()=>undefined).finally(()=>{processing=false})
-   },400)
-  })
- }
- async function readImage(file:File):Promise<string|undefined>{
-  if(onReadProfessionalCredentialImage)return onReadProfessionalCredentialImage(file)
-  const bitmap=await createImageBitmap(file)
-  try{const target=canvas.current;if(!target)return undefined;target.width=bitmap.width;target.height=bitmap.height;const context=target.getContext('2d',{willReadFrequently:true});if(!context)return undefined;context.drawImage(bitmap,0,0);return jsQR(context.getImageData(0,0,target.width,target.height).data,target.width,target.height)?.data}
-  finally{bitmap.close()}
- }
  async function capture(read:()=>Promise<string|undefined>,message:string){
   const epoch=++captureEpoch.current;setLocalError('')
   try{const candidate=await read();if(!mounted.current||epoch!==captureEpoch.current)return;const value=typeof candidate==='string'?candidate.trim():'';if(!value){setLocalError(message);return}setCredential(value);resetResolution()}

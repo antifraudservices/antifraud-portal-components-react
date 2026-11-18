@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Add controlled generic credential QR capture with complete manual input, explicit host verification, bounded local PNG/JPEG/inert SVG images and camera cleanup. Share camera/jsQR primitives with existing professional profile capture; capture alone conveys no verification or authority.
+
+- Validate all 65 component cases, strict typecheck and build. A separate real
+  browser diagnostic decodes the official SHC example as SVG, PNG, JPEG and a
+  synthetic video stream into its complete numeric value, without mocking the
+  QR decoders. This establishes capture behavior, not physical-camera support
+  or a clinical portal journey.
+
 ## 0.4.1 - 2026-11-17
 
 - Pin public Common UI 1.3.1. The complete 49-case suite, strict typecheck and

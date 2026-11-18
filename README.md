@@ -58,3 +58,9 @@ executable checks. See the integration guide for validation responsibilities.
 ## License
 
 Apache-2.0.
+
+### Credential QR capture
+
+`CredentialQrCapture` is a controlled, container-neutral candidate input. Import it from `antifraud-portal-components-react/credential-qr-capture` or the package root. Pass `value`, `onChange`, `onVerify`, and all labels through `copy`; the host owns verification, pending state and results. Paste accepts the complete numeric `shc:/` value without trimming or truncation. Camera/image capture updates the candidate only; the Verify button explicitly calls the host. It grants no identity or signature status.
+
+PNG/JPEG and inert SVG QR images are bounded to 4 MiB and 16 million decoded pixels. SVG permits plain geometry and rejects active content, external references, entities and embedded documents. Camera tracks stop on Close or unmount, including a late permission grant. The same internal camera/jsQR primitives serve existing professional-profile capture. No network, persistence or credential-verification operation belongs to this component.
