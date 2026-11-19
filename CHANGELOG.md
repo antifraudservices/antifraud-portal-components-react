@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Add a controlled public offering directory with sector/category filters
+  before optional availability geography, search, grid/list views and one card
+  per product. Seller offers distinguish eligibility, delivery, operation and
+  support. Presentation never verifies an organisation or grants access.
+
 ## 0.4.2
 
 - Add controlled generic credential QR capture with complete manual input, explicit host verification, bounded local PNG/JPEG/inert SVG images and camera cleanup. Share camera/jsQR primitives with existing professional profile capture; capture alone conveys no verification or authority.

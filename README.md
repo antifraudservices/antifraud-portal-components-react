@@ -59,6 +59,17 @@ executable checks. See the integration guide for validation responsibilities.
 
 Apache-2.0.
 
+### Public offering discovery
+
+`PublicOfferingDirectory`, from `antifraud-portal-components-react/public-offering-directory`,
+renders a controlled public catalogue. Supply entries, sector/category and ISO
+geography options, `query`, `view`, translated `copy`, `onQueryChange` and
+`onViewChange`. One product has multiple territorial offers. Selecting a country
+clears the subdivision; both geographic filters are optional. Search matches a
+product, publisher or relevant seller. Delivery, operation and support remain
+separate assertions. The component makes no network, persistence or authority
+decision. Import the package stylesheet for framework-independent layout.
+
 ### Credential QR capture
 
 `CredentialQrCapture` is a controlled, container-neutral candidate input. Import it from `antifraud-portal-components-react/credential-qr-capture` or the package root. Pass `value`, `onChange`, `onVerify`, and all labels through `copy`; the host owns verification, pending state and results. Paste accepts the complete numeric `shc:/` value without trimming or truncation. Camera/image capture updates the candidate only; the Verify button explicitly calls the host. It grants no identity or signature status.

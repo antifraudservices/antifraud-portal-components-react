@@ -3,6 +3,56 @@
 @import './identity-entry.css';
 @import './professional-profile.css';
 
+.afpc-public-offering-directory { color: var(--afpc-text); background: var(--afpc-surface); padding: clamp(1rem, 4vw, 3rem); border-radius: 1.25rem; }
+:is([data-theme='dark'], .dark) .afpc-public-offering-directory {
+  color-scheme: dark;
+  --afpc-surface: #101b2b;
+  --afpc-panel: #192638;
+  --afpc-panel-muted: #233650;
+  --afpc-text: #edf4ff;
+  --afpc-border: #4a5c72;
+}
+.afpc-public-offering-directory > h2 { margin: 0; font-size: clamp(1.9rem, 4vw, 3.25rem); letter-spacing: -.045em; line-height: 1.05; }
+.afpc-public-offering-directory > p { max-width: 60ch; margin-top: .65rem; }
+.afpc-public-offering-directory label { display: grid; gap: .35rem; min-width: 0; font-size: .875rem; font-weight: 600; }
+.afpc-public-offering-directory input,
+.afpc-public-offering-directory select { width: 100%; min-width: 0; box-sizing: border-box; min-height: 2.75rem; font: inherit; color: inherit; padding: .55rem .75rem; background: var(--afpc-panel); border: 1px solid var(--afpc-border); border-radius: .65rem; }
+.afpc-offering-search { margin-top: 1.5rem; }
+.afpc-offering-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .75rem; margin-top: .85rem; }
+.afpc-offering-toolbar { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-top: 1.6rem; font-weight: 650; }
+.afpc-offering-switch { display: inline-flex; padding: .2rem; gap: .15rem; border: 1px solid var(--afpc-border); border-radius: .75rem; background: var(--afpc-panel); }
+.afpc-offering-switch button { padding: .4rem .65rem; border: 0; border-radius: .5rem; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.afpc-offering-results { display: grid; gap: 1rem; margin-top: 1rem; grid-template-columns: 1fr; }
+.afpc-offering-results[data-view='grid'] { grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr)); align-items: start; }
+.afpc-offering-card { min-width: 0; overflow: hidden; overflow-wrap: anywhere; border: 1px solid var(--afpc-border); border-radius: 1rem; background: var(--afpc-panel); box-shadow: 0 4px 18px #172b4d0d; }
+.afpc-offering-media { background: var(--afpc-panel-muted); }
+.afpc-offering-media > img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.afpc-offering-media[data-logo='true'] > img { object-fit: contain; padding: 1.25rem; box-sizing: border-box; }
+.afpc-offering-thumbs { display: flex; gap: .4rem; padding: .45rem .75rem; overflow-x: auto; }
+.afpc-offering-thumbs button { flex: 0 0 2.65rem; padding: .12rem; border: 0; border-radius: .38rem; cursor: pointer; }
+.afpc-offering-thumbs img { display: block; width: 100%; height: 1.7rem; object-fit: cover; border-radius: .28rem; }
+.afpc-offering-body { padding: 1.1rem; display: grid; gap: .6rem; }
+.afpc-offering-body > * { margin: 0; }
+.afpc-offering-body h3 { font-size: 1.6rem; line-height: 1.12; letter-spacing: -.035em; }
+.afpc-offering-brand { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; font-size: .85rem; font-weight: 650; }
+.afpc-offering-brand img { width: 2rem; height: 2rem; border-radius: 50%; object-fit: cover; }
+.afpc-offering-brand span:last-child { margin-inline-start: auto; font-weight: 500; }
+.afpc-offering-territories { display: flex; flex-wrap: wrap; gap: .3rem; padding: 0; list-style: none; }
+.afpc-offering-territories li { background: var(--afpc-panel-muted); border-radius: 999px; padding: .15rem .6rem; font-size: .8rem; }
+.afpc-offering-details summary { background: #1555af; color: white; border-radius: .65rem; padding: .6rem .75rem; font-weight: 650; }
+.afpc-offering-sellers, .afpc-offering-pricing { display: grid; gap: .65rem; margin-top: .75rem; }
+.afpc-offering-sellers section, .afpc-offering-plan { padding: .8rem; border: 1px solid var(--afpc-border); border-radius: .7rem; }
+.afpc-offering-sellers h4, .afpc-offering-plan h5 { margin: 0 0 .35rem; }
+.afpc-offering-sellers dd { margin: 0 0 .45rem; }
+.afpc-offering-sellers dt { font-weight: 650; }
+.afpc-offering-plan strong { font-size: 1.2rem; }
+@media (min-width: 770px) {
+  .afpc-offering-results[data-view='list'] .afpc-offering-card:has(.afpc-offering-media) { display: grid; grid-template-columns: minmax(11rem, 25%) 1fr; align-items: start; }
+}
+.afpc-public-offering-directory button[aria-pressed='true'] { background: #1d4ed8; color: #fff; }
+.afpc-public-offering-directory summary { cursor: pointer; }
+.afpc-public-offering-directory a { color: inherit; text-decoration: underline; text-underline-offset: .2em; }
+
 :root {
   --afpc-surface: var(--afcc-surface, hsl(210 28% 96%));
   --afpc-panel: var(--afcc-panel, hsl(0 0% 100%));

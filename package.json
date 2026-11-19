@@ -71,6 +71,10 @@
       "types": "./dist/qualification-evidence-editor.d.ts",
       "default": "./dist/qualification-evidence-editor.js"
     },
+    "./public-offering-directory": {
+      "types": "./dist/public-offering-directory.d.ts",
+      "default": "./dist/public-offering-directory.js"
+    },
     "./sector-portal-surfaces": {
       "types": "./dist/sector-portal-surfaces.d.ts",
       "default": "./dist/sector-portal-surfaces.js"
@@ -101,6 +105,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "antifraud-data-utils-ts": "0.4.2",
     "antifraud-common-components-react": "1.3.1",
     "jsqr": "1.4.0"
   },
