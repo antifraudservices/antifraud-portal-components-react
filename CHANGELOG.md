@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.3
 
 - Add a controlled public offering directory with sector/category filters
   before optional availability geography, search, grid/list views and one card
