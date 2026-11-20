@@ -75,6 +75,10 @@
       "types": "./dist/public-offering-directory.d.ts",
       "default": "./dist/public-offering-directory.js"
     },
+    "./public-offering-draft-review": {
+      "types": "./dist/public-offering-draft-review.d.ts",
+      "default": "./dist/public-offering-draft-review.js"
+    },
     "./sector-portal-surfaces": {
       "types": "./dist/sector-portal-surfaces.d.ts",
       "default": "./dist/sector-portal-surfaces.js"

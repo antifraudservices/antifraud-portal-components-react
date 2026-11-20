@@ -1,6 +1,6 @@
 'use client'
 import React, {useId, useState} from 'react'
-import {searchPublicOfferingCatalog, type PublicOffering, type PublicOfferingQuery} from 'antifraud-data-utils-ts/public-offering-catalog'
+import {publicOfferingListingKey, searchPublicOfferingCatalog, type PublicOffering, type PublicOfferingQuery} from 'antifraud-data-utils-ts/public-offering-catalog'
 
 export type {PublicOffering, PublicOfferingQuery} from 'antifraud-data-utils-ts/public-offering-catalog'
 export type PublicOfferingOption = Readonly<{value: string; label: string}>
@@ -57,7 +57,7 @@ export function PublicOfferingDirectory({copy, entries, sectors, categories, cou
     </div>
     {!busy && !results.length ? <p className="mt-4">{copy.empty}</p> : null}
     <div className="afpc-offering-results mt-4 grid gap-4" data-view={view}>
-      {results.map(item => <article key={item.id} className="afpc-offering-card">
+      {results.map(item => <article key={publicOfferingListingKey(item)} className="afpc-offering-card">
         <OfferingGallery item={item} imageLabel={billingCopy?.image ?? 'Image'}/>
         <div className="afpc-offering-body">
         <div className="afpc-offering-brand">
