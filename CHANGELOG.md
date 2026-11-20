@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.4 - 2026-11-20
 
 - Let the host accept photo attachments from each reviewed product or service.
 - Keep public cards distinct when publishers or offering types share an ID.
