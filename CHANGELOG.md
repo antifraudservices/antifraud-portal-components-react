@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Let the host accept photo attachments from each reviewed product or service.
+- Keep public cards distinct when publishers or offering types share an ID.
+- Add a reusable catalogue review form with per-entry review and a single
+  publication action for the completed batch.
+
 ## 0.4.3
 
 - Add a controlled public offering directory with sector/category filters
