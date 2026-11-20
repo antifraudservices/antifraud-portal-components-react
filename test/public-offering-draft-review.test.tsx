@@ -13,6 +13,8 @@ it('prefills and reviews each product before publishing, retaining edits and ide
     deliveryCountries:[],operationCountries:[],supportCountries:[],url:'https://example.invalid/checkout'}]
   const document=readPublicOfferingDraftDocument({data:['Tracker','Collar'].map(name=>({id:name.toLowerCase(),type:'Product',
     attributes:{name,category:'devices',description:name,offers}}))})
+  const [tracker,collar]=document.data
+  if(!tracker||!collar)throw new Error('The catalogue fixture must contain both products')
   const publish=vi.fn(async()=>true)
   render(<PublicOfferingDraftReview initialDocument={document} publish={publish}/>)
   const button=(name:string)=>screen.getByRole('button',{name}) as HTMLButtonElement
@@ -30,7 +32,7 @@ it('prefills and reviews each product before publishing, retaining edits and ide
   fireEvent.click(button('Mark as reviewed'))
   expect(publish).not.toHaveBeenCalled()
   fireEvent.click(button('Publish reviewed entries'))
-  await waitFor(()=>expect(publish).toHaveBeenCalledWith({...document,data:[{...document.data[0],attributes:{...document.data[0].attributes,name:'Final tracker'}},document.data[1]]}))
+  await waitFor(()=>expect(publish).toHaveBeenCalledWith({...document,data:[{...tracker,attributes:{...tracker.attributes,name:'Final tracker'}},collar]}))
 })
 
 it('keeps files attached to their listing and requires review again after changing them',async()=>{

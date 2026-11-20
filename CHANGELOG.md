@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.5 - 2026-11-20
+
+- Pin the published Antifraud data contracts that supply catalogue draft
+  parsing and listing identity.
+
 ## 0.4.4 - 2026-11-20
 
 - Let the host accept photo attachments from each reviewed product or service.
