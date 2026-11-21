@@ -83,6 +83,11 @@
       "types": "./dist/sector-portal-surfaces.d.ts",
       "default": "./dist/sector-portal-surfaces.js"
     },
+    "./service-activation.css": "./dist/service-activation.css",
+    "./service-activation": {
+      "types": "./dist/service-activation.d.ts",
+      "default": "./dist/service-activation.js"
+    },
     "./verification-journey-panel": {
       "types": "./dist/verification-journey-panel.d.ts",
       "default": "./dist/verification-journey-panel.js"
@@ -99,7 +104,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs'); for(const file of ['styles.css','device-assistance-preferences.css','identity-entry.css','professional-profile.css'])fs.copyFileSync('src/'+file,'dist/'+file)\"",
+    "build": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs'); for(const file of ['styles.css','device-assistance-preferences.css','service-activation.css','identity-entry.css','professional-profile.css'])fs.copyFileSync('src/'+file,'dist/'+file)\"",
     "test": "vitest run",
     "test:legacy:workforce": "vitest run test/organization-workforce-administration.test.tsx",
     "typecheck": "tsc -p tsconfig.json --noEmit"

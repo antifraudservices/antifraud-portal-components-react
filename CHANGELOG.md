@@ -7,6 +7,10 @@
 
 ## 0.4.4 - 2026-11-20
 
+- Add collapsible service activation cards with service-specific terms,
+  authoritative price quotes, configurable payment options, and per-service
+  activation, checkout and invoice status.
+
 - Let the host accept photo attachments from each reviewed product or service.
 - Keep public cards distinct when publishers or offering types share an ID.
 - Add a reusable catalogue review form with per-entry review and a single
