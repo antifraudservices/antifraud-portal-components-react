@@ -14,3 +14,5 @@ export * from './sector-portal-surfaces.js'
 export * from './verification-journey-panel.js'
 export * from './credential-qr-capture.js'
 export * from './public-offering-directory.js'
+
+export * from './portable-credential-output.js'
