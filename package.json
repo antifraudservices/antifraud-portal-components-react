@@ -9,6 +9,10 @@
     "./dist/conversation-surface.js": "./dist/conversation-surface.web.js"
   },
   "exports": {
+    "./wallet-offer-panel": {
+      "types": "./dist/wallet-offer-panel.d.ts",
+      "default": "./dist/wallet-offer-panel.js"
+    },
     "./professional-profile.css": "./dist/professional-profile.css",
     "./professional-profile-activation-panel": {
       "types": "./dist/professional-profile-activation-panel.d.ts",
@@ -95,6 +99,10 @@
     "./credential-qr-capture": {
       "types": "./dist/credential-qr-capture.d.ts",
       "default": "./dist/credential-qr-capture.js"
+    },
+    "./portable-credential-output": {
+      "types": "./dist/portable-credential-output.d.ts",
+      "default": "./dist/portable-credential-output.js"
     }
   },
   "files": [

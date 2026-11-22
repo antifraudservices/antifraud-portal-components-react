@@ -1,4 +1,5 @@
 export * from './credential-profile-selector.js'
+export * from './wallet-offer-panel.js'
 export * from './device-assistance-preferences.js'
 export * from './environment-selector.js'
 export * from './identity-evidence-editor.js'
@@ -14,3 +15,5 @@ export * from './sector-portal-surfaces.js'
 export * from './verification-journey-panel.js'
 export * from './credential-qr-capture.js'
 export * from './public-offering-directory.js'
+
+export * from './portable-credential-output.js'
