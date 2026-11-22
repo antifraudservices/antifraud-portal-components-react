@@ -9,6 +9,10 @@
     "./dist/conversation-surface.js": "./dist/conversation-surface.web.js"
   },
   "exports": {
+    "./wallet-offer-panel": {
+      "types": "./dist/wallet-offer-panel.d.ts",
+      "default": "./dist/wallet-offer-panel.js"
+    },
     "./professional-profile.css": "./dist/professional-profile.css",
     "./professional-profile-activation-panel": {
       "types": "./dist/professional-profile-activation-panel.d.ts",

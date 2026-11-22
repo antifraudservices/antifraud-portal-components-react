@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Reuse a single panel to request and display credential offers from the
+  authenticated host in professional and holder portals.
+
 ## 0.4.5 - 2026-11-20
 
 - Pin the published Antifraud data contracts that supply catalogue draft
