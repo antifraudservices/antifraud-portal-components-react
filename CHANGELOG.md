@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.6 - 2026-11-23
 
 - Reuse a single panel to request and display credential offers from the
   authenticated host in professional and holder portals.
