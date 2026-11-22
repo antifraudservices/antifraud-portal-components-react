@@ -5,6 +5,9 @@
 - Reuse a single panel to request and display credential offers from the
   authenticated host in professional and holder portals.
 
+- Add a reusable view for issued credential files and printable QR sequences,
+  including separately labeled companion proofs.
+
 ## 0.4.5 - 2026-11-20
 
 - Pin the published Antifraud data contracts that supply catalogue draft

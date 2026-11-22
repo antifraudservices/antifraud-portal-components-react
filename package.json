@@ -99,6 +99,10 @@
     "./credential-qr-capture": {
       "types": "./dist/credential-qr-capture.d.ts",
       "default": "./dist/credential-qr-capture.js"
+    },
+    "./portable-credential-output": {
+      "types": "./dist/portable-credential-output.d.ts",
+      "default": "./dist/portable-credential-output.js"
     }
   },
   "files": [
