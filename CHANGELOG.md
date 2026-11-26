@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.5.0 - 2026-11-25
 
 - Add an accessible account communications disclosure for calls, video calls,
   voice messages, text and files supplied by the host.
