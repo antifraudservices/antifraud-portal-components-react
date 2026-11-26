@@ -1,6 +1,6 @@
 {
   "name": "antifraud-portal-components-react",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "description": "Reusable React components for neutral antifraud verification and attestation journeys",
   "type": "module",
   "main": "./dist/index.js",
