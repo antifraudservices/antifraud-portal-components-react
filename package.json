@@ -9,6 +9,16 @@
     "./dist/conversation-surface.js": "./dist/conversation-surface.web.js"
   },
   "exports": {
+    "./current-subject-selector": {
+      "types": "./dist/current-subject-selector.d.ts",
+      "default": "./dist/current-subject-selector.js"
+    },
+    "./current-subject-selector.css": "./dist/current-subject-selector.css",
+    "./account-communications": {
+      "types": "./dist/account-communications.d.ts",
+      "default": "./dist/account-communications.js"
+    },
+    "./account-communications.css": "./dist/account-communications.css",
     "./wallet-offer-panel": {
       "types": "./dist/wallet-offer-panel.d.ts",
       "default": "./dist/wallet-offer-panel.js"
@@ -112,7 +122,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs'); for(const file of ['styles.css','device-assistance-preferences.css','service-activation.css','identity-entry.css','professional-profile.css'])fs.copyFileSync('src/'+file,'dist/'+file)\"",
+    "build": "tsc -p tsconfig.build.json && node -e \"const fs=require('node:fs'); for(const file of ['current-subject-selector.css','account-communications.css','styles.css','device-assistance-preferences.css','service-activation.css','identity-entry.css','professional-profile.css'])fs.copyFileSync('src/'+file,'dist/'+file)\"",
     "test": "vitest run",
     "test:legacy:workforce": "vitest run test/organization-workforce-administration.test.tsx",
     "typecheck": "tsc -p tsconfig.json --noEmit"

@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Add an accessible account communications disclosure for calls, video calls,
+  voice messages, text and files supplied by the host.
+- Add a reusable header selector for the current subject. The host owns the list
+  and the selection, including pending and rejected changes.
+
 ## 0.4.6 - 2026-11-23
 
 - Reuse a single panel to request and display credential offers from the
